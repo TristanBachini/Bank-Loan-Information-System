@@ -1,0 +1,68 @@
+{% extends 'navbar/navbar.html' %}
+{% block content %} {% load static %}
+
+<div class="container-sm register ">
+    <div class="container overflow-hidden"style="font-family:Verdana">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="row gx-5">
+          <div class="col">
+            <label for="first_name" class="form-label left" style="font-size: small;">First Name:</label>
+           <div class="p-1 border bg-light left-register" id="first_name">{{form.first_name}}</div>
+          </div>
+          <div class="col">
+            <label for="last_name" class="form-label right"style="font-size: small;">Last Name:</label>
+            <div class="p-1 border bg-light right-register" id="last_name">{{form.last_name}}</div>
+          </div>
+        </div>
+        <div class="row gx-5">
+          <div class="col">
+            <label for="username" class="form-label left"style="font-size: small;">Username:</label>
+           <div class="p-1 border bg-light left-register" id="username">{{form.username}}</div>
+          </div>
+          <div class="col">
+            <label for="email" class="form-label right"style="font-size: small;">Email:</label>
+            <div class="p-1 border bg-light right-register"id="email">{{form.email}}</div>
+          </div>
+        </div>
+        <div class="row gx-5">
+          <div class="col">
+            <label for="password1" class="form-label left"style="font-size: small;">Password:</label>
+           <div class="p-1 border bg-light left-register" id="password1">{{form.password1}}</div>
+          </div>
+          <div class="col" style="font-size: small;">
+            <p>
+              By checking this button, you agree to the terms and conditions.
+            </p>
+          </div>
+        </div>
+        <div class="row gx-5">
+          <div class="col">
+            <label for="password2" class="form-label left"style="font-size: small;">Re-enter password:</label>
+            <div class="p-1 border bg-light left-register" id="password2">{{form.password2}}</div>
+          </div>
+        </div>
+
+        <button id="submit_button" type="submit" class="btn btn-primary right-register"style="float: right;">Create Account</button>
+      </form>
+        
+      </div>
+</div>
+<div style="margin-top: -1in;">
+  {% if form.errors %} {% for key, value in form.errors.items %}
+    <div
+      class="alert alert-danger alert-dismissable fade show reg-error"
+      role="alert"
+    >
+      <strong>Error!</strong> {{value|striptags}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %}
+</div>
+
+{% endblock %}

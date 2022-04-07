@@ -1,0 +1,62 @@
+{% load auth_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/css/navbar-main-login/styles.css' %}">
+</head>
+<body class="body" style="background-color:rgb(216, 215, 214);">
+    <div class="bar">
+      {% if not user.is_authenticated %}
+        <div class="login-bar">
+          <a href="{% url 'login' %}"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.04in">Login</a>
+        </div>
+        <div class="login-bar">
+          <a href="{% url 'register' %}"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Register</a>
+        </div>
+      {% else %}
+        {% if request.user|has_group:"borrower" %}
+          <div class="login-bar">
+            <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Loan</a>
+          </div>
+          {% if request.user|has_group:"hasbankaccount" %}
+            <div class="login-bar">
+              <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Manage Bank Account</a>
+            </div>
+            {% else %}
+            <div class="login-bar">
+              <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Create Bank Account</a>
+            </div>
+          {% endif %}
+          <div class="login-bar">
+            <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Welcome, {{user.get_username}}</a>
+          </div>
+
+
+        {% endif %}
+      {% endif %}
+      <div class="login-bar"style="background-color: rgb(216, 215, 214);padding-top:.03in;padding-bottom:.02in">
+        <a href="#">Customer Care</a>
+      </div>
+    </div>
+    <nav class="navbar navbar-light navbar-expand-lg bg-light" style="width: 100%;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+          <form class="d-flex search-form">
+            <input class="search-box" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+    </nav>
+
+    {%block content%}
+    {%endblock%}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
