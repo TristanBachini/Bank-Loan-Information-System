@@ -21,4 +21,5 @@ urlpatterns = [
     path('',include("main.urls")),
     path('auth/', include("login_app.urls")),
     path('navbar/', include("navbar.urls")),
+    path('loan-calculator/', include("bank_calculator.urls")),
 ]

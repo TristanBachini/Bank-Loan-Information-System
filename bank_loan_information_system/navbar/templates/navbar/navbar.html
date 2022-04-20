@@ -9,6 +9,7 @@
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static '/css/navbar-main-login/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/loan calculator/styles.css' %}">
 </head>
 <body class="body" style="background-color:rgb(216, 215, 214);">
     <div class="bar">
@@ -26,11 +27,11 @@
           </div>
           {% if request.user|has_group:"hasbankaccount" %}
             <div class="login-bar">
-              <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Manage Bank Account</a>
+              <a href="{% url 'loan-calculator' %}"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Manage Bank Account</a>
             </div>
             {% else %}
             <div class="login-bar">
-              <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Create Bank Account</a>
+              <a href="{% url 'loan-calculator' %}"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Create Bank Account</a>
             </div>
           {% endif %}
           <div class="login-bar">
@@ -56,7 +57,7 @@
 
     {%block content%}
     {%endblock%}
-
+    <script src="{% static '/js/loan calculator/script.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

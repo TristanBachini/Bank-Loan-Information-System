@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main',
     'login_app',
     'navbar',
+    'bank_calculator',
 ]
 
 MIDDLEWARE = [
