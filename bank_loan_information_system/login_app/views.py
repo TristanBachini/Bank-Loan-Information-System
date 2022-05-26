@@ -18,7 +18,10 @@ def login_page(request):
         #check if user credentials is registered. If not, it will return to login page with error message
         if user is not None:
             login(request, user)
-            return render(request, "main/home.html")
+            if user.groups.filter(name="banker"):
+                return render(request, "bank_officer/dashboard.html")
+            else:
+                return render(request, "main/home.html")
         else:
             messages.info(request, "Username or Password is incorrect.")
             return render(request, "login_app/login.html")

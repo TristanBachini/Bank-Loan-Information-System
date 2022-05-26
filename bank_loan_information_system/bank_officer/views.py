@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import logout
 
 # Create your views here.
 def dashboard (request):
@@ -12,3 +13,9 @@ def approved (request):
 
 def rejected (request):
     return render(request, 'bank_officer/rejected.html')
+
+
+def logout_page(request):
+    logout(request)
+    print("it worked until here tho")
+    return render(request, "main/home.html")

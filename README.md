@@ -20,6 +20,7 @@
 1. Click "local instance connection".
 2. Create a new sql script.
 3. Run 
+
         CREATE USER 'db_username'@'localhost' IDENTIFIED BY 'password';
         CREATE DATABASE db_bank;
         GRANT ALL PRIVILEGES ON * . * TO 'db_username'@'localhost';
@@ -31,11 +32,10 @@
 
 1. Make sure you are in the right directory.
 2. Run "pipenv shell" to make virtual environent
-3. Go to bank_loan_information_system directory.
-4. Run "pip install -r requirements.txt"
-5. Run "python manage.py makemigrations"
-6. Run "python manage.py migrate"
-7. Create superuser "python manage.py createsuperuser"
-8. Run program "python manage.py runserver"
-9. Go to admin page and login superuser
-10. Create groups: "banker", "borrower", "hasbankaccount"
+3. Run "pip install -r requirements.txt"
+4. Run "python manage.py makemigrations"
+5. Run "python manage.py migrate"
+6. Create superuser "python manage.py createsuperuser"
+7. Run program "python manage.py runserver" expect an error but proceed to next step.
+8. Go to admin page (127.0.0.1:8000/admin) and login superuser 
+9. Create groups: "banker", "borrower", "hasbankaccount"
