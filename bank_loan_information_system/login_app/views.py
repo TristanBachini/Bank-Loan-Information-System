@@ -40,3 +40,9 @@ def register(request):
             data = {"form":form}
             return render(request, "login_app/register.html",data)
     return render(request, "login_app/register.html",data)
+
+
+def logout_page(request):
+    logout(request)
+    print("it worked until here tho")
+    return render(request, "main/home.html")

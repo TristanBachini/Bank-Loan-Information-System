@@ -8,18 +8,14 @@
           <div class="row gx-5">
             <div class="col">
               <label for="sellingprice" class="form-label calcu-labels">Selling Price (PhP): </label>
-              <input type="number" min="0" id="sellingprice" class="calcu-field p-1 border bg-light" name="sellingprice" step="0.000000000000000001" placeholder="0.00" class="form-control">
-            </div>
-          </div>
-          <div class="row gx-5">
-            <div class="col">
+              <input required type="number" min="0" id="sellingprice" class="calcu-field p-1 border bg-light" name="sellingprice" step="0.000000000000000001" placeholder="0.00" class="form-control">
             </div>
           </div>
           <div class="row gx-5">
             <div class="col ">
               <label for="percentage">Percentage:  </label>
               <div class="calcu-left input-group mb-3">
-                <input aria-describedby="basic-addon2" type="number" step="0.000000000000000001" min="0" max="100" class="calcu-field p-1 border bg-light" id="percentage" name="percentage" placeholder="0.00">
+                <input required aria-describedby="basic-addon2" type="number" step="0.000000000000000001" min="0" max="100" class="calcu-field p-1 border bg-light" id="percentage" name="percentage" placeholder="0.00">
                 <span class="input-group-text" id="basic-addon2"><p>%</p></span>
               </div>
             </div>
@@ -27,7 +23,7 @@
               <label for="amount">Amount:  </label>
               <div class="calcu-right input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><p>PhP</p></span>
-                <input aria-describedby="basic-addon1" type="number"  min="0" step="0.000000000000000001" class="calcu-field p-1 border bg-light" id="amount" name="amount" placeholder="0.00">
+                <input required aria-describedby="basic-addon1" type="number"  min="0" step="0.000000000000000001" class="calcu-field p-1 border bg-light" id="amount" name="amount" placeholder="0.00">
               </div>
             </div>
           </div>
@@ -39,18 +35,11 @@
               <label for="percentage">Months to pay:  </label>
               <div class="calcu-left calcu-field input-group mb-3">
                 
-                <select name="months" class="form-control" id="months">
+                <select required name="months" class="form-control" id="months">
                     {% for month in months %}
                     <option value="{{month.months}}">{{month.months}} Months</option>
                     {% endfor %}
                 </select>
-              </div>
-
-              <div class="col calcu-right">
-                <label for="downpayment">Downpayment:  </label>
-                <div class="calcu-right input-group mb-3">
-                  <input aria-describedby="basic-addon1" type="number"  min="0" step="0.000000000000000001" class="calcu-field p-1 border bg-light" id="downpayment" name="downpayment" placeholder="0.00">
-                </div>
               </div>
             </div>
           </div>
@@ -58,7 +47,7 @@
             <div class="col ">
               <label for="unit">Preferred Type of Unit:  </label>
               <div class="calcu-left input-group mb-3">
-                <input type="text"class="calcu-field p-1 border bg-light form-control" id="unit" name="unit">
+                <input required type="text"class="calcu-field p-1 border bg-light form-control" id="unit" name="unit">
               </div>
             </div>
           </div>
@@ -71,7 +60,32 @@
     <div class="container overflow-hidden"style="font-family:Verdana">
       <div class="row gx-5">
         <div class="col">
-          
+          Selling price: {{price}}
+        </div>
+      </div>
+      <div class="row gx-5">
+        <div class="col">
+          Downpayment: {{amount}}({{percentage}}%)
+        </div>
+      </div>
+      <div class="row gx-5">
+        <div class="col">
+          Amount Financed: {{loan}}
+        </div>
+      </div>
+      <div class="row gx-5">
+        <div class="col">
+          Monthly Amortization: {{payment}}
+        </div>
+      </div>
+      <div class="row gx-5">
+        <div class="col">
+          Number of Payments: {{number_of_months}}
+        </div>
+      </div>
+      <div class="row gx-5">
+        <div class="col">
+          Preferred type of unit: {{unit}}
         </div>
       </div>
     </div>
