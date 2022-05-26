@@ -1,0 +1,33 @@
+{% extends 'navbar/navbar.html' %}
+{% block content %} {% load static %}
+<div class="container-fluid" style="margin-top: 1%; padding:1%;">
+  <div class="row">
+    <div class="col-lg"style="font-family:Verdana">
+        <table id="rows" class="table table-primary table-bordered table-hover">
+            <thead>
+                <th>Application No</th>
+                <th>Brand</th>
+                <th>Loan Amount</th>
+                <th>Interest Rate</th>
+                <th>Number of Payments</th>
+                <th>Status</th>
+            </thead>
+            {% for loan in loans %}
+            <tbody>
+                <tr onclick="window.location='#'">
+                    <td>{{loan.app_no}}</td>
+                    <td>{{loan.brand}}</td>
+                    <td>₱ {{loan.loan_amt}}</td>
+                    <td>{{loan.int_rate}}</td>
+                    <td>{{loan.no_of_payments}}</td>
+                    <td>{{loan.status}}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+  

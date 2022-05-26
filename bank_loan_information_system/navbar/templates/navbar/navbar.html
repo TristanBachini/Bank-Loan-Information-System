@@ -28,11 +28,14 @@
           <div class="login-bar">
             <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Loan</a>
           </div>
+          <div class="login-bar">
+            <a href="{% url 'view-loan-apps' %}" style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">View Loan Applications</a>
+          </div>
           {% if request.user|has_group:"hasbankaccount" %}
-            <div class="login-bar">
-              <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Manage Bank Account</a>
-            </div>
-            {% else %}
+          <div class="login-bar">
+            <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Manage Bank Account</a>
+          </div>         
+          {% else %} 
             <div class="login-bar">
               <a href="#"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Create Bank Account</a>
             </div>
@@ -43,7 +46,6 @@
           <div class="login-bar">
             <a href="{% url 'logout' %}"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Logout</a>
           </div>
-
 
         {% endif %}
       {% endif %}
