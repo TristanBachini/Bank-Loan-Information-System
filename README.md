@@ -1,6 +1,6 @@
 # Bank-Loan-Information-System
 
-TO SETUP DATABASE
+# TO SETUP DATABASE
 
 1. If you don't have mysql download one and install.
 2. Go to "edit system environmental variables".'
@@ -15,7 +15,7 @@ TO SETUP DATABASE
 6. Restart computer.
 
 
-IN MYSQL WORKBENCH
+# IN MYSQL WORKBENCH
 
 1. Click "local instance connection".
 2. Create a new sql script.
@@ -27,7 +27,7 @@ IN MYSQL WORKBENCH
 4. If the code works, refresh schemas and you should be able to see "db_bank".
 
 
-TO SETUP APPLICATION
+# TO SETUP APPLICATION
 
 1. Make sure you are in the right directory.
 2. Run "pipenv shell" to make virtual environent

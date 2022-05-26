@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="{% static '/css/loan calculator/styles.css' %}">
 </head>
 <body class="body" style="background-color:rgb(216, 215, 214);">
+  <nav class="navbar sticky-top navbar-light navbar-expand-lg bg-light" style="width: 100%;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+      <form class="d-flex search-form">
+        <input class="search-box" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
     <div class="bar">
       <div class="login-bar">
         <a href="{% url 'loan-calculator' %}"style="background-color: rgb(216, 215, 214);padding-top:.04in;padding-bottom:.03in">Loan Calculator</a>
@@ -53,14 +61,8 @@
         <a href="#">Customer Care</a>
       </div>
     </div>
-    <nav class="navbar navbar-light navbar-expand-lg bg-light" style="width: 100%;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
-          <form class="d-flex search-form">
-            <input class="search-box" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
+    <!-- <nav class="navbar navbar-light navbar-expand-lg bg-light" style="width: 100%;"> -->
+      
     </nav>
 
     {%block content%}
