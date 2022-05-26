@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'navbar',
     'bank_calculator',
     'loans_borrower',
+    'bank_officer',
 ]
 
 MIDDLEWARE = [
