@@ -8,17 +8,17 @@
                 <th>Application No</th>
                 <th>Brand</th>
                 <th>Loan Amount</th>
-                <th>Interest Rate</th>
+                <th>Downpayment Percentage</th>
                 <th>Number of Payments</th>
                 <th>Status</th>
             </thead>
             {% for loan in loans %}
             <tbody>
                 <tr onclick="window.location='#'">
-                    <td>{{loan.app_no}}</td>
-                    <td>{{loan.brand}}</td>
+                    <td>{{loan.id}}</td>
+                    <td>{{loan.make}}</td>
                     <td>₱ {{loan.loan_amt}}</td>
-                    <td>{{loan.int_rate}}</td>
+                    <td>{{loan.dp_percent}} %</td>
                     <td>{{loan.no_of_payments}}</td>
                     <td>{{loan.status}}</td>
                 </tr>
