@@ -21,7 +21,7 @@ urlpatterns = [
     path('',include("main.urls")),
     path('auth/', include("login_app.urls")),
     path('navbar/', include("navbar.urls")),
-    path('loan-calculator/', include("bank_calculator.urls")),
+    path('upbank/', include("bank_calculator.urls")),
     path('borrower/', include("loans_borrower.urls")),
     path('bank-officer/', include("bank_officer.urls")),
     path('create-account/', include("create_manage_acc.urls"))

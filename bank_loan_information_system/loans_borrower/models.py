@@ -75,6 +75,8 @@ class Loans(models.Model):
     home_own = models.CharField(max_length=100, choices=HOME_OWN, null=True, blank=True)
 
     phone_type = models.CharField(max_length=100, choices=PHONE_TYPE, null=True, blank=True)
+    home_num = models.CharField(max_length=100, null=True, blank=True)
+    mobile_num = models.CharField(max_length=100, null=True, blank=True)
     email_add = models.CharField(max_length=100, null=True, blank=True)
 
     prime_income = models.CharField(max_length=100, choices=PRIME_INCOME, null=True, blank=True)
