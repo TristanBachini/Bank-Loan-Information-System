@@ -12,6 +12,12 @@ MARITAL_STATUS = (
     ('3', 'Widow'),
 )
 
+PREFIX = (
+    ('0', 'Mr.'),
+    ('1', 'Mrs.'),
+    ('2', 'Ms.'),
+)
+
 YEARS= [x for x in range(1940,2022)]
 
 
@@ -29,3 +35,4 @@ class AccountRegForm(forms.Form):
                    "size": "30",
                    "placeholder":('E-mail address')})
     )
+    prefix = forms.CharField(label='Prefix', widget=forms.Select(choices=PREFIX))
