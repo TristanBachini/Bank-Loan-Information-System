@@ -6,4 +6,4 @@ class Months_To_Pay(models.Model):
     months = IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.months
+        return str(self.months)

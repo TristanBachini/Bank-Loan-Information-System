@@ -1,12 +1,3 @@
 {% extends 'navbar/navbar.html' %} {% load auth_extras %}
 {% block content %}
-{% if request.user|has_group:"banker" %}
-This is Banker
-{% else %}
-{% endif %}
-{% if request.user|has_group:"borrower" %}
-This is Borrower
-{% else %}
-{% endif %}
-This is home
 {% endblock %}

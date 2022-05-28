@@ -1,99 +1,155 @@
 {% extends 'navbar/navbar.html' %}
-{% block content %} {% load static %}
-<div class="row gx-5">
-  <div class="container-sm loan-calcu ">
-    <div class="container overflow-hidden"style="font-family:Verdana">
-        <form method="post" action="">
-          {% csrf_token %}
-          <div class="row gx-5">
-            <div class="col">
-              <label for="sellingprice" class="form-label calcu-labels">Selling Price (PhP): </label>
-              <input required type="number" min="0" id="sellingprice" class="calcu-field p-1 border bg-light" name="sellingprice" step="0.000000000000000001" placeholder="0.00" class="form-control">
+{% load static %}
+{% block content %}
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2" style="color:#00573f">Loan Calculator</h1>
+            
+                    <p class="mb-4 text-gray-900">Compute for the monthly amortization that matches your budget.</p>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                        </div>
+                        <div class="card-body">
+                            <!-- Content Row -->
+                            <div class="row">
+                                <!-- Card Example -->
+                                <div class="col-xl-4 col-xl-6 mb-4">
+                                    <div class="card shadow h-100 py-2" style="border-left-color:#feb81c;border-left-width:medium">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <form method="post" action="">
+                                                        {% csrf_token %}
+                                                        <div class="row gx-5">
+                                                          <div class="col ">
+                                                            <label for="sellingprice" class="form-label calcu-labels" style="color: black">Selling Price</label>
+                                                            <div class="calcu-right input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon1" style="width:10%"><p style="margin:auto">PhP</p></span>
+                                                                <input required type="number" min="0" id="sellingprice" class="calcu-field p-1 border bg-light" name="sellingprice" step="0.000000000000000001" placeholder="0.00" class="form-control" style="width:90%">
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <label class="form-label calcu-labels" style="color: black">Downpayment<br>
+                                                            <span style="color: red; font-size:small;">Note: Minimum down payment is 20% of the selling price.</span>
+                                                        </label>
+                                                        <div class="row gx-5">
+                                                          <div class="col" style="width:50%">
+                                                            <label for="percentage" style="color: black">Percentage</label>
+                                                            <div class="calcu-left input-group mb-3">
+                                                              <input required aria-describedby="basic-addon2" type="number" step="0.000000000000000001" min="0" max="100" class="calcu-field p-1 border bg-light" id="percentage" name="percentage" placeholder="0.00" style="width:80%">
+                                                              <span class="input-group-text" id="basic-addon2" style="width:20%"><p style="margin:auto">%</p></span>
+                                                            </div>
+                                                          </div>
+                                                          <div class="col calcu-right" style="width:50%">
+                                                            <label for="amount" style="color: black">Amount</label>
+                                                            <div class="calcu-right input-group mb-3">
+                                                              <span class="input-group-text" id="basic-addon1" style="width:20%"><p style="margin:auto">PhP</p></span>
+                                                              <input required aria-describedby="basic-addon1" type="number"  min="0" step="0.000000000000000001" class="calcu-field p-1 border bg-light" id="amount" name="amount" placeholder="0.00" style="width:80%">
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="row gx-5">
+                                                          <div class="col ">
+                                                            <label for="percentage" style="color: black">Number of Payments</label>
+                                                            <div class="calcu-left calcu-field input-group mb-3">
+                                                              <select required name="months" class="form-control" id="months">
+                                                                  {% for month in months %}
+                                                                  <option value="{{month.months}}">{{month.months}} Months</option>
+                                                                  {% endfor %}
+                                                              </select>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="row gx-5">
+                                                          <div class="col ">
+                                                            <label for="unit" style="color: black">Preferred Type of Unit</label>
+                                                            <div class="calcu-left input-group mb-3">
+                                                              <input required type="text"class="calcu-field p-1 border bg-light form-control" id="unit" name="unit">
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <button id="submit_button" type="submit" class="btn btn-primary login-button"style="float:right;background:#feb81c;border-color:#feb81c">Calculate</button>
+                                                      </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card Example -->
+                                <div class="col-xl-4 col-xl-6 mb-4">
+                                    <div class="card shadow h-100 py-2" style="border-left-color:#feb81c;border-left-width:medium">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="row gx-5">
+                                                        <p class="col" style="color: red">Your computed indicative results are: </p>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row gx-5">
+                                                        <div class="col" style="text-align:right;color:black">
+                                                          Selling Price
+                                                        </div>
+                                                        <div class="col" style="text-align:left">
+                                                          PhP {{price}}
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row gx-5">
+                                                        <div class="col" style="text-align:right;color:black">
+                                                          Down Payment
+                                                        </div>
+                                                        <div class="col" style="text-align:left">
+                                                          PhP {{amount}}({{percentage}}%)
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row gx-5">
+                                                        <div class="col" style="text-align:right;color:black">
+                                                          Amount Financed
+                                                        </div>
+                                                        <div class="col" style="text-align:left">
+                                                          PhP {{loan}}
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row gx-5">
+                                                        <div class="col" style="text-align:right;color:black">
+                                                          Monthly Amortization
+                                                        </div>
+                                                        <div class="col" style="text-align:left">
+                                                          PhP {{payment}}
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row gx-5">
+                                                        <div class="col" style="text-align:right;color:black">
+                                                          Number of Payments
+                                                        </div>
+                                                        <div class="col" style="text-align:left">
+                                                          {{number_of_months}} MONTHS
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row gx-5">
+                                                        <div class="col" style="text-align:right;color:black">
+                                                          Preferred Type of Unit
+                                                        </div>
+                                                        <div class="col" style="text-align:left;text-transform:uppercase">
+                                                          {{unit}}
+                                                        </div>
+                                                    </div>
+                                                    <br><br>
+                                                    <div class="row gx-5">
+                                                        <p class="col" style="color:red;font-size:small;text-align: justify;">Disclaimer: The figures in this computation only serve as a guide and may change without prior notice.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
             </div>
-          </div>
-          <div class="row gx-5">
-            <div class="col ">
-              <label for="percentage">Percentage:  </label>
-              <div class="calcu-left input-group mb-3">
-                <input required aria-describedby="basic-addon2" type="number" step="0.000000000000000001" min="0" max="100" class="calcu-field p-1 border bg-light" id="percentage" name="percentage" placeholder="0.00">
-                <span class="input-group-text" id="basic-addon2"><p>%</p></span>
-              </div>
-            </div>
-            <div class="col calcu-right">
-              <label for="amount">Amount:  </label>
-              <div class="calcu-right input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><p>PhP</p></span>
-                <input required aria-describedby="basic-addon1" type="number"  min="0" step="0.000000000000000001" class="calcu-field p-1 border bg-light" id="amount" name="amount" placeholder="0.00">
-              </div>
-            </div>
-          </div>
-          <div class="row gx-5">
-            <p style="color: red; font-size: x-small;">Note that minimum of 20% down payment is required.</p>
-          </div>
-          <div class="row gx-5">
-            <div class="col ">
-              <label for="percentage">Months to pay:  </label>
-              <div class="calcu-left calcu-field input-group mb-3">
-                
-                <select required name="months" class="form-control" id="months">
-                    {% for month in months %}
-                    <option value="{{month.months}}">{{month.months}} Months</option>
-                    {% endfor %}
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row gx-5">
-            <div class="col ">
-              <label for="unit">Preferred Type of Unit:  </label>
-              <div class="calcu-left input-group mb-3">
-                <input required type="text"class="calcu-field p-1 border bg-light form-control" id="unit" name="unit">
-              </div>
-            </div>
-          </div>
-          <button id="submit_button" type="submit" class="btn btn-primary login-button"style="float: right;">Calculate</button>
-        </form>
+        </div>
     </div>
-  </div>
-  
-  <div class="container-sm loan-calcu-results ">
-    <div class="container overflow-hidden"style="font-family:Verdana">
-      <div class="row gx-5">
-        <div class="col">
-          Selling price: {{price}}
-        </div>
-      </div>
-      <div class="row gx-5">
-        <div class="col">
-          Downpayment: {{amount}}({{percentage}}%)
-        </div>
-      </div>
-      <div class="row gx-5">
-        <div class="col">
-          Amount Financed: {{loan}}
-        </div>
-      </div>
-      <div class="row gx-5">
-        <div class="col">
-          Monthly Amortization: {{payment}}
-        </div>
-      </div>
-      <div class="row gx-5">
-        <div class="col">
-          Number of Payments: {{number_of_months}}
-        </div>
-      </div>
-      <div class="row gx-5">
-        <div class="col">
-          Preferred type of unit: {{unit}}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-{% endblock %}
+{% endblock content %}

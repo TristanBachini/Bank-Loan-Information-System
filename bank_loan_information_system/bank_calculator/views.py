@@ -1,3 +1,4 @@
+from calendar import month
 from django.shortcuts import render
 from bank_calculator.models import Months_To_Pay
 
@@ -11,12 +12,16 @@ def pmt(percentage, loan, number_of_months):
 
     return monthly_payment
 
-
-
-
 def loan_compute(percentage,amount,preferred_unit,selling_price,loan,number_of_months,months):
 
     monthly_payment = pmt(percentage,loan,number_of_months)
+
+    selling_price = "{:.2f}".format(float(selling_price))
+    amount = "{:.2f}".format(float(amount))
+    percentage = "{:.2f}".format(float(percentage))
+    loan = "{:.2f}".format(float(loan))
+    monthly_payment = "{:.2f}".format(float(monthly_payment))
+
     summary  = {'number_of_months':number_of_months,'percentage':percentage,'payment':monthly_payment,
     'amount':amount,'unit':preferred_unit,'price':selling_price,'loan':loan,'months':months}
     
