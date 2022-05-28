@@ -1,0 +1,117 @@
+
+/* Navbar */
+
+.search-form {
+    flex-grow: 1; 
+    min-width: 25rem;
+    justify-self: center;
+    position: absolute;
+    padding-left: 150px;
+    padding-right: 500px;
+}
+.search-box {
+width: 100%;  
+min-width: 10rem;
+padding: .4rem;
+background-color: #ffb;
+justify-self: center;
+background-color: white;
+}
+
+.login-bar{
+    display:inline-block;
+    background-color: white;
+}
+
+.bar{
+    color: rgb(216, 215, 214);
+    text-align: right;
+   
+}
+
+.bar a{
+    text-decoration: none;
+    color: black;
+    padding-right: .4in;
+    font-size: small;
+}
+
+/* register page */
+.register{
+    border: .1in;
+    position: sticky;
+    width:8in;
+    min-width: 8in;
+    height: 5in;
+    min-height: 5in;
+    margin-top: 2in;
+    border: black;
+    background-color: rgba(238, 157, 171, 0.49);
+    justify-self: center;
+    margin-bottom: 2in;
+}
+
+.left-register{
+    min-width: 2in;
+    max-width: 2in;
+    margin-left: 1in;
+    margin-top:-.08in;
+}
+.right-register{
+    min-width: 2in;
+    max-width: 2in;
+    margin-left: 1in;
+    margin-top:-.08in;
+    margin-right: 1in;
+}
+.left{
+    margin-top: .3in;
+    min-width: 1in;
+    max-width: 2in;
+    margin-left: 1in;
+}
+.right{
+    margin-top: .3in;
+    min-width: 1in;
+    max-width: 2in;
+    margin-left: 1in;
+}
+
+/* login */
+
+.login-field{
+    max-width: 3in;
+    min-width: 3in;
+    float:right;
+    margin-right: .5in;
+    margin-top: .4in;
+}
+
+.login-labels{
+    font-size: small; 
+    margin-top: .4in;
+}
+
+.login-button{
+    margin-top: .2in;
+    margin-right: .7in;
+}
+
+.login{
+    border: .1in;
+    position: sticky;
+    max-width:5in;
+    min-width: 5in;
+    max-height: 3in;
+    min-height: 3in;
+    margin-top: 2in;
+    padding-top: .5in;
+    border: black;
+    background-color: rgba(238, 157, 171, 0.49);
+    justify-self: center;
+    margin-bottom: 2in;
+}
+
+
+
+

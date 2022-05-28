@@ -24,4 +24,5 @@ urlpatterns = [
     path('loan-calculator/', include("bank_calculator.urls")),
     path('borrower/', include("loans_borrower.urls")),
     path('bank-officer/', include("bank_officer.urls")),
+    path('create-account/', include("create_manage_acc.urls"))
 ]

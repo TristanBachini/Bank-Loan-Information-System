@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
     'main',
     'login_app',
     'navbar',
     'bank_calculator',
     'loans_borrower',
     'bank_officer',
+    'create_manage_acc'
 ]
 
 MIDDLEWARE = [
