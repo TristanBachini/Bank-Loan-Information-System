@@ -1,0 +1,22 @@
+{% extends 'navbar/navbar.html' %}
+{% block content %} {% load static %}
+<div class="row gx-5">
+    <div class="container-sm loan-calcu ">
+      <div class="container overflow-hidden"style="font-family:Verdana">
+          <form method="post" action="" >
+            {% csrf_token %}
+            <div class="row gx-5">
+              <div class="col ">
+                <label for="percentage">Deposit amount:  </label>
+                <input required type="text"class="calcu-field p-1 border bg-light form-control" id="unit" name="unit">
+              </div>
+            </div>
+            <button id="submit_button" type="submit" class="btn btn-primary login-button"style="float: right;">SUBMIT</button>
+          </form>
+      </div>
+    </div>
+    
+  </div>
+
+
+{% endblock %}

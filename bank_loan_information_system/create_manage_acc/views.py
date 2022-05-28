@@ -9,3 +9,8 @@ def account_registration(request):
     #     return render(request, 'create_manage_acc/create-acc.html')
     form = AccountRegForm()
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
+
+
+def deposit_money(request):
+
+    return render(request, 'create_manage_acc/deposit-money.html')
