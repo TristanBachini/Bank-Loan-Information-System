@@ -1,7 +1,7 @@
 from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
-from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.modelfields import PhoneNumberField
 import datetime
 
 class AccountReg(models.Model):
@@ -30,10 +30,10 @@ class AccountReg(models.Model):
     last_name = models.CharField(max_length=100)
     sex = models.CharField(max_length=100, choices=SEX)
     marital_status = models.CharField(max_length=100, choices=MARITAL_STATUS)
-    birth_date= models.DateField(blank=True, null=True)
+    birth_date= models.DateField(blank=True, null=True, max_length=8)
     email = models.EmailField()
     prefix = models.CharField(max_length=100, choices=PREFIX)
-    phone = PhoneNumberField()
+    phone = models.CharField(max_length=11, blank=True, null=True)
     address = models.CharField(max_length=300)
 
     def __str__(self):

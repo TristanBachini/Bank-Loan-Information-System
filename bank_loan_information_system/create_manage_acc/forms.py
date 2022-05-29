@@ -3,6 +3,7 @@ from django.forms import ModelForm, TextInput, PasswordInput, CharField, HiddenI
 from .models import AccountReg
 from django.forms.widgets import DateInput, Select, RadioSelect
 import datetime
+from phonenumber_field.formfields import PhoneNumberField
 
 # TYPE_SELECT = (
 #     ('0', 'Female'),
@@ -47,9 +48,11 @@ class AccountRegForm(ModelForm):
         fields = "__all__"
         widgets = {
             'user':  HiddenInput(attrs={'type': 'hidden'}),
-            'first_name' : forms.TextInput(attrs={'class': 'form-control input-area', 'placeholder': 'Enter your name', 'required' : True}),
+            'first_name' : forms.TextInput(attrs={'class': 'form-control input-area', 'placeholder': 'First name', 'required' : True}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last name', 'aria-label': 'Last name', 'required': True}),
             'prefix':  Select(attrs={'class': 'form-control'}),
             'sex':  Select(attrs={'class': 'form-control'}),
-            'marital_status':  Select(attrs={'class': 'form-control'})
+            'marital_status':  Select(attrs={'class': 'form-control'}),
+            'phone' : TextInput(attrs={'class': 'form-control', 'placeholder': 'Mobile', 'aria-label': 'Mobile', 'required': False}),
+            'birth_date': DateInput({'class': 'form-control', 'type': 'date'}),
         }

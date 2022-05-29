@@ -17,7 +17,7 @@ def account_registration(request):
         form = AccountRegForm(request.POST)
         if form.is_valid():
             user.groups.add(group)
-            #form.save()
+            form.save()
             return render(request, 'create_manage_acc/deposit-money.html', {'loans':loans})
     form = AccountRegForm()
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
