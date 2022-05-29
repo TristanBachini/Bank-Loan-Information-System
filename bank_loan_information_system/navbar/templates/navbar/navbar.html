@@ -67,11 +67,14 @@
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Loan Applications</span></a>
                         {% if request.user|has_group:"hasbankaccount" %}
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{% url 'deposit-money' %}">
                                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                                <span>Manage Bank Account</span></a>  
+                                <span>Manage Bank Account</span></a> 
+                            <a class="nav-link" href="{% url 'deposit-money' %}">
+                                <i class="fas fa-fw fa-tachometer-alt"></i>
+                                <span>Deposit Money</span></a> 
                         {% else %} 
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{% url 'create-account' %}">
                                 <i class="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Create Bank Account</span></a>
                         {% endif %}
