@@ -5,7 +5,8 @@ from loans_borrower.models import Loans
 
 
 def viewLoanApps(request):
-    loans = Loans.objects.all()
+    user = request.user
+    loans = Loans.objects.filter(user=user)
     
     data = {
         'loans' : loans,

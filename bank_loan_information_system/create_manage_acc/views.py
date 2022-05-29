@@ -6,12 +6,13 @@ from loans_borrower.models import Loans
 
 # Create your views here.
 def account_registration(request):
-    loans = Loans.objects.all()
+    user = request.user
+    loans = Loans.objects.filter(user=user)
     # for loan in loans:
     #     if loan.status == "Approved":
             
     group = Group.objects.get(name='hasbankaccount')
-    user = request.user
+    
     if(request.method == 'POST'):
         form = AccountRegForm(request.POST)
         if form.is_valid():
