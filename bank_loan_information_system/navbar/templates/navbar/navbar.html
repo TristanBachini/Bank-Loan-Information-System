@@ -73,10 +73,6 @@
                         {% else %} 
                             {% for loan in loans %}
                                 {%if loan.status == "Approved" %}
-                                <a class="nav-link" href="{% url 'deposit-money' %}">
-                                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                                    <span>Manage Bank Account</span></a> 
-                                {% else %}
                                 <a class="nav-link" href="{% url 'create-account' %}">
                                     <i class="fas fa-fw fa-tachometer-alt"></i>
                                     <span>Create Bank Account</span></a>
