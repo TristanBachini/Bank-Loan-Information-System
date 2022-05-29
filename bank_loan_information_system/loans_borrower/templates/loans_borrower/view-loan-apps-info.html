@@ -1,0 +1,75 @@
+{% extends 'navbar/navbar.html' %}
+{% block content %} {% load static %}
+{% load humanize %}
+
+
+<body>
+<div class="container-fluid" style="margin-top: 1%; padding:1%;">
+    <div class="row">
+      <div class="col-lg" style="background-color: white">
+          <h2>Status: {{loan.status}}</h2>
+          <br>
+        
+          <h5>Vehicle Information</h5>
+          <hr>
+          <h6>Make/Manufacturer: {{loan.make}}</h6>
+          <h6>Model: {{loan.model}}</h6>
+          <h6>Selling Price: ₱{{loan.sell_price|intcomma}}</h6>
+          <h6>Downpayment Percentage: {{loan.dp_percent}}%</h6>
+          <h6>Downpayment Amount: ₱{{loan.dp_amt|intcomma}}</h6>
+          <h6>Loan Amount: ₱{{loan.loan_amt|intcomma}}</h6>
+          <h6>Number of Payments: {{loan.no_of_payments}}</h6>
+          <br>
+  
+          <h5>Personal Information</h5>
+          <hr>
+          <h6>First Name: {{loan.first_name}}</h6>
+          <h6>Middle Name: {{loan.middle_name}}</h6>
+          <h6>Last Name: {{loan.last_name}}</h6>
+          <h6>Birth Date: {{loan.birthdate}}</h6>
+          <h6>Civil Status: {{loan.civ_status}}</h6>
+          <h6>Home Address: {{loan.unit_no}}, {{loan.condo_name}}, {{loan.street}}, {{loan.subdiv_brgy}}, {{loan.city}}, {{loan.municip_prov}}, 
+              {{loan.country}}
+          </h6>
+          <h6>Length of Stay: {{loan.len_stay_num}} {{loan.len_stay}}</h6>
+          <h6>Home Ownership: {{loan.len_stay}} {{loan.len_stay_num}}</h6>
+          <br>
+  
+          <h5>Contact Information</h5>
+          <hr>
+          <h6>Phone Type: {{loan.phone_type}}</h6>
+          {% if loan.phone_type == "Home" %}
+          <h6>Home Number: {{loan.home_num}}</h6>
+          {% else %}
+          <h6>Phone Number: {{loan.phone_num}}</h6>
+          {% endif %}
+          <h6>Email Address: {{loan.email_add}}</h6>
+          <br>
+  
+          <h5>Employment/Business Details</h5>
+          <hr>
+          <h6>Primary Source of Income: {{loan.prime_income}}</h6>
+  
+          {% if loan.prime_income == "Employment" %}
+          <h6>Employment Type: {{loan.emp_type}}</h6>
+          <h6>Employer/Recruitment Agency Name: {{loan.emp_name}}</h6>
+          <h6>Job Title/Position: {{loan.job_pos}}</h6>
+          <h6>Employment Tenure: {{loan.emp_tenure_num}} {{loan.emp_tenure}}</h6>
+          <h6>Monthly Income: ₱{{loan.emp_monthly_income|intcomma}}</h6>
+          <h6>Work Number: {{loan.emp_work_no}}</h6>
+  
+          {% else %}
+          <h6>Business Type: {{loan.bsns_type}}</h6>
+          <h6>Business Name: {{loan.bsns_name}}</h6>
+          <h6>Business Tenure: {{loan.bsns_tenure_num}} {{loan.bsns_tenure}}</h6>
+          <h6>Monthly Income: ₱{{loan.bsns_monthly_income|intcomma}}</h6>
+          <h6>Work Number: {{loan.bsns_work_no}}</h6>
+          <h6>Business Address: {{loan.bsns_unit_no}}, {{loan.bsns_condo_name}}, {{loan.bsns_street}}, {{loan.bsns_subdiv_brgy}}, {{loan.bsns_city}}, {{loan.bsns_municip_prov}}, 
+              {{loan.bsns_country}}
+          </h6>
+          {% endif %}
+  
+      </div>
+    </div>
+</body>
+{% endblock %}

@@ -12,7 +12,17 @@ def viewLoanApps(request):
     data = {
         'loans' : loans,
     }
-    return render(request, 'loans_borrower/viewLoanApps.html', data)
+    return render(request, 'loans_borrower/view-loan-apps.html', data)
+
+
+def viewLoanAppsInfo(request, pk):
+    loan = Loans.objects.get(id=pk)
+
+    data = {
+        'loan' : loan,
+    }
+    return render(request, 'loans_borrower/view-loan-apps-info.html', data)   
+
 
 def loanApply(request):
     loan_form = LoanApplyForm()

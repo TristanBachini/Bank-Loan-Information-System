@@ -1,24 +1,28 @@
 {% extends 'navbar/navbar.html' %}
 {% block content %} {% load static %}
+{% load humanize %}
+
+
+<body>
 <div class="container-fluid" style="margin-top: 1%; padding:1%;">
   <div class="row">
-    <div class="col-lg"style="font-family:Verdana">
-        <table id="rows" class="table table-primary table-bordered table-hover">
+    <div class="col-lg">
+        <table id="rows" class="table table-bordered table-hover">
             <thead>
                 <th>Application No</th>
                 <th>Brand</th>
                 <th>Loan Amount</th>
-                <th>Downpayment Percentage</th>
+                <th>Down Payment Percentage</th>
                 <th>Number of Payments</th>
                 <th>Status</th>
             </thead>
             {% for loan in loans %}
             <tbody>
-                <tr onclick="window.location='#'">
+                <tr onclick="window.location='{% url 'view-loan-apps-info' loan.id %}'">
                     <td>{{loan.id}}</td>
                     <td>{{loan.make}}</td>
-                    <td>₱ {{loan.loan_amt}}</td>
-                    <td>{{loan.dp_percent}} %</td>
+                    <td>₱{{loan.loan_amt|intcomma}}</td>
+                    <td>{{loan.dp_percent}}%</td>
                     <td>{{loan.no_of_payments}}</td>
                     <td>{{loan.status}}</td>
                 </tr>
@@ -28,6 +32,6 @@
     </div>
   </div>
 </div>
-
+</body>
 {% endblock %}
   
