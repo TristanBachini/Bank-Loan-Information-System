@@ -7,14 +7,17 @@
           {% csrf_token %}
           <div class="row gx-5">
             <div class="col ">
-              <label for="percentage">Full Name:  </label>
-              <div class="calcu-left input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><p>Prefix</p></span>
+              <div>
+                <label for="percentage">Prefix:  </label>
                 {{form.prefix}}
-                <label for="percentage">Surname:  </label>
-                {{form.first_name}}
-                <label for="percentage">First name:  </label>
+              </div>
+              <div>
+                <label for="percentage">Last Name:  </label>
                 {{form.last_name}}
+              </div>
+              <div>
+                <label for="percentage">First name:  </label>
+                {{form.first_name}}
               </div>
             </div>
           </div>
@@ -39,7 +42,7 @@
           <div class = "row gx-5">
             <div class = "col">
               <label for="percentage">Phone number:  </label>
-              <input required type="text"class="calcu-field p-1 border bg-light form-control" id="unit" name="unit">
+              {{ form.phone }}
             </div>
           </div>
           <div class = "row gx-5">
@@ -51,10 +54,10 @@
           <div class = "row gx-5">
             <div class = "col">
               <label for="percentage">Address:  </label>
-              <input required type="text"class="calcu-field p-1 border bg-light form-control" id="unit" name="unit">
+              {{form.address}}
             </div>
           </div>
-          <button id="submit_button" type="submit" class="btn btn-primary login-button"style="float: right;">SUBMIT</button>
+          <button id="submit_button" type="submit" class="btn btn-primary login-button"style="float: left;">Create Account</button>
         </form>
     </div>
   </div>

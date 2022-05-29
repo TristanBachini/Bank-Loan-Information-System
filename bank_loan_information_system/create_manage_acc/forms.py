@@ -1,4 +1,5 @@
 from django import forms
+from phonenumber_field.formfields import PhoneNumberField
 import datetime
 
 TYPE_SELECT = (
@@ -37,3 +38,5 @@ class AccountRegForm(forms.Form):
                    "placeholder":('E-mail address')})
     )
     prefix = forms.CharField(label='Prefix', widget=forms.Select(choices=PREFIX))
+    phone = PhoneNumberField()
+    address = forms.CharField(label='Last name', max_length=300)
