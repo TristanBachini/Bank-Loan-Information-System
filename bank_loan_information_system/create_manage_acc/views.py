@@ -2,9 +2,14 @@ from django.shortcuts import render
 from . import views
 from .forms import AccountRegForm
 from django.contrib.auth.models import Group
+from loans_borrower.models import Loans
 
 # Create your views here.
 def account_registration(request):
+    loans = Loans.objects.all()
+    # for loan in loans:
+    #     if loan.status == "Approved":
+            
     group = Group.objects.get(name='hasbankaccount')
     user = request.user
     if(request.method == 'POST'):
@@ -12,7 +17,7 @@ def account_registration(request):
         if form.is_valid():
             user.groups.add(group)
             #form.save()
-            return render(request, 'create_manage_acc/deposit-money.html')
+            return render(request, 'create_manage_acc/deposit-money.html', {'loans':loans})
     form = AccountRegForm()
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
 

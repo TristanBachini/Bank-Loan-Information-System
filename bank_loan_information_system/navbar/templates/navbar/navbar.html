@@ -70,13 +70,18 @@
                             <a class="nav-link" href="{% url 'deposit-money' %}">
                                 <i class="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Manage Bank Account</span></a> 
-                            <a class="nav-link" href="{% url 'deposit-money' %}">
-                                <i class="fas fa-fw fa-tachometer-alt"></i>
-                                <span>Deposit Money</span></a> 
                         {% else %} 
-                            <a class="nav-link" href="{% url 'create-account' %}">
-                                <i class="fas fa-fw fa-tachometer-alt"></i>
-                                <span>Create Bank Account</span></a>
+                            {% for loan in loans %}
+                                {%if loan.status == "Approved" %}
+                                <a class="nav-link" href="{% url 'deposit-money' %}">
+                                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                                    <span>Manage Bank Account</span></a> 
+                                {% else %}
+                                <a class="nav-link" href="{% url 'create-account' %}">
+                                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                                    <span>Create Bank Account</span></a>
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
