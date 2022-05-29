@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'bank_calculator',
     'loans_borrower',
     'bank_officer',
-    'create_manage_acc'
+    'create_manage_acc',
 ]
 
 MIDDLEWARE = [

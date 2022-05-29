@@ -60,7 +60,7 @@
                         <span>Register</span></a>
                 {% else %}
                     {% if request.user|has_group:"borrower" %}
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'loan-apply' %}">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Loan</span></a>
                     <a class="nav-link" href="{% url 'view-loan-apps' %}">

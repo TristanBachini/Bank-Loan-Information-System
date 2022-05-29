@@ -1,0 +1,12 @@
+{% extends 'navbar/navbar.html' %}
+{% block content %} {% load static %}
+
+
+<form action="" class="create-record-form" method="post">
+    {% csrf_token %}
+    {{loan_form}}
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% endblock %}

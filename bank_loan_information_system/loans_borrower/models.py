@@ -46,7 +46,7 @@ class Loans(models.Model):
         ('OFW Non-Immigrant(Private)', 'OFW Non-Immigrant(Private)'),
     )
 
-    status = models.CharField(max_length=100, choices=STATUS, null=True)
+    status = models.CharField(default='For Review',max_length=100, choices=STATUS, null=True)
 
     make = models.CharField(max_length=100, null=True, blank=True)
     model = models.CharField(max_length=100, null=True, blank=True)
