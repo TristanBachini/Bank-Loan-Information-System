@@ -6,5 +6,6 @@ urlpatterns = [
     path('review', views.review, name="review"),
     path('approved', views.approved, name="approved"),
     path('rejected', views.rejected, name="rejected"),
-    path('logout/',views.logout_page, name="logout")
+    path('logout/',views.logout_page, name="logout"),
+    path('view-loan-app/<str:pk>', views.view_loan_app, name="loan-app"),
 ]
