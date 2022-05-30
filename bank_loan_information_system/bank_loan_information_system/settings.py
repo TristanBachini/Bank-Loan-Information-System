@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'loans_borrower',
     'bank_officer',
     'create_manage_acc',
+    'djmoney',
 ]
 
 MIDDLEWARE = [

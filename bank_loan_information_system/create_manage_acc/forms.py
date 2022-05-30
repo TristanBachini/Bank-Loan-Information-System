@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, TextInput, PasswordInput, CharField, HiddenInput, NumberInput,CheckboxInput
-from .models import AccountReg
+from .models import AccountReg, BankAccount
 from django.forms.widgets import DateInput, Select, RadioSelect
 import datetime
 from phonenumber_field.formfields import PhoneNumberField
@@ -56,3 +56,8 @@ class AccountRegForm(ModelForm):
             'phone' : TextInput(attrs={'class': 'form-control', 'placeholder': 'Mobile', 'aria-label': 'Mobile', 'required': False}),
             'birth_date': DateInput({'class': 'form-control', 'type': 'date'}),
         }
+
+class BankAccountForm(ModelForm):
+    class Meta:
+        model = BankAccount
+        fields = '__all__'

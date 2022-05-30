@@ -2,6 +2,9 @@ from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+from djmoney.models.fields import MoneyField
+from django.conf import settings
+
 import datetime
 
 class AccountReg(models.Model):
@@ -25,7 +28,7 @@ class AccountReg(models.Model):
 
     YEARS= [x for x in range(1940,2022)]
 
-    user = models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
+    uuser = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     sex = models.CharField(max_length=100, choices=SEX)
@@ -38,3 +41,7 @@ class AccountReg(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.user,self.email)
+
+class BankAccount(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    balance = MoneyField(max_digits=100, decimal_places=2, default_currency='PHP')
