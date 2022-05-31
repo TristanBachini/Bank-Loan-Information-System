@@ -66,7 +66,7 @@ class LoanApplyForm(forms.ModelForm):
             'emp_work_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Work no.'}),
 
             # If business
-            'bsns_type': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Business Type'}),
+            'bsns_type': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Business Type'}),
             'bsns_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Business Name"}),
             'bsns_tenure': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Tenure'}),
             'bsns_tenure_num': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Tenure no.'}),
