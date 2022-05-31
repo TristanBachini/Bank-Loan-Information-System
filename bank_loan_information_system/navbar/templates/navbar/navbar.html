@@ -47,51 +47,66 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item {% if request.resolver_match.view_name == 'loan-calculator' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'loan-calculator' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Loan Calculator</span></a>
+            </li>
+
+            <li class="nav-item">
                 {% if not user.is_authenticated %}
+                <li class="nav-item {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'login' %}">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Login</span></a>
+                <li class="nav-item {% if request.resolver_match.view_name == 'register' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'register' %}">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Register</span></a>
+                </li>
+
                 {% else %}
                     {% if request.user|has_group:"borrower" %}
+                    <li class="nav-item {% if request.resolver_match.view_name == 'loan-apply' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'loan-apply' %}">
                         <i class="fas fa-fw fa-file-alt"></i>
                         <span>Loan</span></a>
+                    </li>
+
+                    <li class="nav-item {% if request.resolver_match.view_name == 'view-loan-apps' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'view-loan-apps' %}">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Loan Applications</span></a>
+                    </li>
+
                         {% if request.user|has_group:"hasbankaccount" %}
+                        <li class="nav-item {% if request.resolver_match.view_name == 'deposit-money' %}active{% endif %}">
                             <a class="nav-link" href="{% url 'deposit-money' %}">
                                 <i class="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Manage Bank Account</span></a> 
+                        </li>
                         {% else %} 
+
                             {% for loan in loans %}
                                 {%if loan.status == "Approved" %}
+                                <li class="nav-item {% if request.resolver_match.view_name == 'create-account' %}active{% endif %}">
                                 <a class="nav-link" href="{% url 'create-account' %}">
                                     <i class="fas fa-fw fa-tachometer-alt"></i>
                                     <span>Create Bank Account</span></a>
+                                <li>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
-                    <!-- <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                       <span>Welcome, {{user.get_username}}</span></a> -->
-                    <!--<a class="nav-link" href="{% url 'logout' %}">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                       <span>Logout</span></a> -->
                     {% endif %}
                 {% endif %}
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Customer Care</span></a>
-
             </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

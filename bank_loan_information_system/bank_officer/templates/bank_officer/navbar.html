@@ -46,7 +46,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item {% if request.resolver_match.view_name == 'dashboard' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'dashboard' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -62,21 +62,28 @@
 
             <!-- Nav Item - Charts -->
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item {% if request.resolver_match.view_name == 'review' or  request.resolver_match.view_name == 'approved' or request.resolver_match.view_name == 'rejected'%}active{% endif %}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Loan Applications</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse {% if request.resolver_match.view_name == 'review' or request.resolver_match.view_name == 'approved' or request.resolver_match.view_name == 'rejected'%}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{% url 'review' %}">Applications for Review</a>
-                        <a class="collapse-item" href="{% url 'approved' %}">Approved Loans</a>
-                        <a class="collapse-item" href="{% url 'rejected' %}">Rejected Loans</a>
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'review' %}active{% endif %}" href="{% url 'review' %}">Applications for Review</a>
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'approved' %}active{% endif %}" href="{% url 'approved' %}">Approved Loans</a>
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'rejected' %}active{% endif %}" href="{% url 'rejected' %}">Rejected Loans</a>
                     </div>
                 </div>
             </li>
-            
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Logout</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -132,33 +139,6 @@
                                 </form>
                             </div>
                         </li>
-
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-900 small">Hello!</span>
-                                <!--<img class="img-profile rounded-circle"
-                                    src="{% static '/images/undraw_profile.svg' %}">-->
-                            </a>
-                        <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-900"></i>
-                                        Profile
-                                </a>
-                                
-                    
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{% url 'logout' %}" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-900"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
                     </ul>
 
                 </nav>
