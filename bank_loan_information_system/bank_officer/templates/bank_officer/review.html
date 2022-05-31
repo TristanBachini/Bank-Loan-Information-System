@@ -16,7 +16,7 @@
                                             <th>First Name</th>
                                             <th>Middle Name</th>
                                             <th>Date of Application</th>
-                                            <th>View</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>                              
@@ -27,7 +27,12 @@
                                                     <td><a href="{% url 'loan-app' loan.id %}">{{loan.first_name}}</a></td>
                                                     <td><a href="{% url 'loan-app' loan.id %}">{{loan.middle_name}}</a></td>
                                                     <td>#</td>
-                                                    <td><a href="#" class="btn btn-info btn-circle"><i class="fas fa-info-circle"></i></a></td>
+                                                    <td>
+                                                        <button id="submit_button" type="submit" class="btn btn-primary login-button">
+                                                            <a href="{% url 'loan-app' loan.id %}">View</a></button>
+                                                        <button id="submit_button" type="submit" class="btn btn-primary login-button">
+                                                            <a href="{% url 'generate-pdf' loan.id %}">Download</a></button>
+                                                    </td>
                                                 </tr>
                                         {% endfor %}
                                     </tbody>

@@ -3,6 +3,13 @@ from django.contrib.auth import logout
 from django.shortcuts import render
 from loans_borrower.models import Loans
 from loans_borrower.forms import *
+# for generating pdf
+from io import BytesIO
+from django.template.loader import get_template
+import os
+from xhtml2pdf import pisa
+from django.http import HttpResponse
+from django.views.generic import View
 
 # Create your views here.
 def dashboard (request):
@@ -41,6 +48,32 @@ def view_loan_app(request,pk):
         'loan' : loan,
     }
     return render(request, 'bank_officer/loan-app.html', data) 
+
+# Generate Loan App to PDF
+def fetch_resources(uri, rel):
+    path = os.path.join(uri.replace(settings.STATIC_URL, ""))
+    return path
+
+def render_to_pdf(template_src, context_dict={}):
+    template = get_template(template_src)
+    html  = template.render(context_dict)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)#, link_callback=fetch_resources)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return None
+
+class GeneratePDF(View):
+    def get(self, request, pk, *args, **kwargs):
+        try:
+            loan = Loans.objects.get(id=pk)
+        except:
+            return HttpResponse("505 Not Found")
+        data = {
+            'loan' : loan,
+        }
+        pdf = render_to_pdf('bank_officer/loan-pdf.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')
 
 def logout_page(request):
     logout(request)

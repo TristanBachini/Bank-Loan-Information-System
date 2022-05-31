@@ -8,4 +8,5 @@ urlpatterns = [
     path('rejected', views.rejected, name="rejected"),
     path('logout/',views.logout_page, name="logout"),
     path('view-loan-app/<str:pk>', views.view_loan_app, name="loan-app"),
+    path('download-loan-app/<int:pk>', views.GeneratePDF.as_view(), name="generate-pdf"),
 ]
