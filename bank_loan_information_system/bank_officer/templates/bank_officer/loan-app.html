@@ -7,118 +7,137 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"></h6>
+        <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;"> Status: {{loan.status}}</strong>
+    </div>
+    <div class="card-header py-2">
+        <i style="text-align: right ;"> App No: {{loan.id}} | Date of Appplication:  {{loan.app_date}}</i> 
     </div>
         <div class="card-body">
             <!-- Content Row -->
             <div class="row">
                 <table class="table table-bordered">
                     <tr>
-                        <td class="table-warning"><b>VEHICLE INFORMATION</b></td>
+                        <th class="table-warning" colspan="8" ><b>VEHICLE INFORMATION</b></th>
                     </tr>
                     <tr>
-                        <td class="table-warning">Make/Manufacturer:</td>
-                        <td class="table-light">{{loan.make}}</td>
-                        <td class="table-warning">Model:</td>
-                        <td class="table-light">{{loan.model}}</td>
-                        <td class="table-warning">Selling Price:</td>
-                        <td class="table-light">₱{{loan.sell_price|intcomma}}</td>
-                        <td class="table-warning">Downpayment Percentage:</td>
-                        <td class="table-light">{{loan.dp_percent}}%</td>
+                        <td class="table-light" colspan="1"><b>Manufacturer:</b></td>
+                        <td class="table-light" colspan="1">{{loan.make}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Model:</td>
+                        <td class="table-light" colspan="2">{{loan.model}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Selling Price:</td>
+                        <td class="table-light" colspan="2">₱{{loan.sell_price|intcomma}}</td>
                     </tr>
                     <tr>
-                        <td class="table-warning">Downpayment Amount:</td>
-                        <td class="table-light">₱{{loan.dp_amt|intcomma}}</td>
-                        <td class="table-warning">Loan Amount:</td>
-                        <td class="table-light">₱{{loan.loan_amt|intcomma}}</td>
-                        <td class="table-warning">Number of Payments:</td>
-                        <td class="table-light">{{loan.no_of_payments}} Months</td>
+                        <td class="table-light"colspan="1" style="font-weight:bold ;">Downpayment Percentage:</td>
+                        <td class="table-light" colspan="1">{{loan.dp_percent}}%</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Downpayment Amount:</td>
+                        <td class="table-light" colspan="1">₱{{loan.dp_amt|intcomma}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Amount:</td>
+                        <td class="table-light" colspan="1">₱{{loan.loan_amt|intcomma}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Number of Payments:</td>
+                        <td class="table-light" colspan="1">{{loan.no_of_payments}} Months</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="9"><b>BORROWER INFORMATION</b></th>
                     </tr>
                     <tr>
-                        <td class="table-warning"><b>BORROWER INFORMATION</b></td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">First Name:</td>
+                        <td class="table-light" colspan="2">{{loan.first_name}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Middle Name:</td>
+                        <td class="table-light" colspan="2">{{loan.middle_name}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Last Name:</td>
+                        <td class="table-light" colspan="2">{{loan.last_name}}</td>
                     </tr>
                     <tr>
-                        <td class="table-warning">First Name:</td>
-                        <td class="table-light">{{loan.first_name}}</td>
-                        <td class="table-warning">Middle Name:</td>
-                        <td class="table-light">{{loan.middle_name}}</td>
-                        <td class="table-warning">Last Name:</td>
-                        <td class="table-light">{{loan.last_name}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Birth Date:</td>
+                        <td class="table-light" colspan="1">{{loan.birthdate}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Civil Status:</td>
+                        <td class="table-light" colspan="2">{{loan.civ_status}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Home Ownership</td>
+                        <td class="table-light" colspan="1">{{loan.home_own}}</td>
+                        <td class="table-light"colspan="1" style="font-weight:bold ;">Length of Stay:</td>
+                        <td class="table-light" colspan="1">{{loan.len_stay_num}} {{loan.len_stay}}</td>
+                     </tr>             
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Home Address:</td>
+                        <td class="table-light" colspan="8">{{loan.unit_no}} {{loan.condo_name}}, {{loan.street}}, 
+                            {{loan.subdiv_brgy}}, {{loan.city}}, {{loan.municip_prov}}, {{loan.country}}</td>     
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="6"><b>CONTACT INFORMATION</b></th>
                     </tr>
                     <tr>
-                        <td class="table-warning">Birth Date:</td>
-                        <td class="table-light">{{loan.birthdate}}</td>
-                        <td class="table-warning">Civil Status:</td>
-                        <td class="table-light">{{loan.civ_status}}</td>
-                        <td class="table-warning">Home Address:</td>
-                        <td class="table-light">{{loan.unit_no}} {{loan.condo_name}}, {{loan.street}}, 
-                            {{loan.subdiv_brgy}}, {{loan.city}}, {{loan.municip_prov}}, {{loan.country}}</td>
-                    </tr>
-                    <tr>
-                        <td class="table-warning">Length of Stay:</td>
-                        <td class="table-light">{{loan.len_stay_num}} {{loan.len_stay}}</td>
-                        <td class="table-warning">Home Ownership</td>
-                        <td class="table-light">{{loan.len_stay}} {{loan.len_stay_num}}</td>
-                    </tr>
-                    <tr>
-                        <td class="table-warning"><b>CONTACT INFORMATION</b></td>
-                    </tr>
-                    <tr>
-                        <td class="table-warning">Phone Type:</td>
-                        <td class="table-light">{{loan.phone_type}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Phone Type:</td>
+                        <td class="table-light" colspan="1">{{loan.phone_type}}</td>
                         {% if loan.phone_type == "Home" %}
-                            <td class="table-warning">Home Number: </td>
-                            <td class="table-light">{{loan.home_num}}</td>
+                            <td class="table-light" colspan="1" style="font-weight:bold ;">Home Number: </td>
+                            <td class="table-light" colspan="1">{{loan.home_num}}</td>
                         {% else %}
-                            <td class="table-warning">Mobile Number:</td>
-                            <td class="table-light">{{loan.phone_num}}</td>
+                            <td class="table-light" colspan="1" style="font-weight:bold ;">Mobile Number:</td>
+                            <td class="table-light" colspan="1">{{loan.phone_num}}</td>
                         {% endif %}
-                        <td class="table-warning">Email Address:</td>
-                        <td class="table-light">{{loan.email_add}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Email Address:</td>
+                        <td class="table-light" colspan="1">{{loan.email_add}}</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="9"><b>EMPLOYMENT/BUSINESS INFORMATION</b></th>
                     </tr>
                     <tr>
-                        <td class="table-warning"><b>EMPLOYMENT/BUSINESS INFORMATION</b></td>
-                    </tr>
-                    <tr>
-                        <td class="table-warning">Primary Source of Income:</td>
-                        <td class="table-light">{{loan.prime_income}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Primary Source of Income:</td>
+                        <td class="table-light" colspan="2">{{loan.prime_income}}</td>
                         {% if loan.prime_income == "Employment" %}
-                        <td class="table-warning">Employment Type: </td>
-                        <td class="table-light">{{loan.emp_type}}</td>
-                        <td class="table-warning">Employment/Recruitment Agency Name:</td>
-                        <td class="table-light">{{loan.emp_name}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Employment Type: </td>
+                        <td class="table-light" colspan="2">{{loan.emp_type}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Employment/Recruitment Agency Name:</td>
+                        <td class="table-light" colspan="2">{{loan.emp_name}}</td>
                         {% else %}
-                        <td class="table-warning">Business Type:</td>
-                        <td class="table-light">{{loan.bsns_type}}</td>
-                        <td class="table-warning">Business Name:</td>
-                        <td class="table-light">{{loan.bsns_name}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Business Type:</td>
+                        <td class="table-light" colspan="2">{{loan.bsns_type}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Business Name:</td>
+                        <td class="table-light" colspan="2">{{loan.bsns_name}}</td>
                         {% endif %}
                     </tr>
                     <tr>
-                        {% if loan.prime_income == "Employment" %}
-                        <td class="table-warning">Job Title/Position:</td>
-                        <td class="table-light">{{loan.job_pos}}</td>
-                        <td class="table-warning">Employment Tenure:</td>
-                        <td class="table-light">{{loan.emp_tenure_num}} {{loan.emp_tenure}}</td>
-                        <td class="table-warning">Monthly Income:</td>
-                        <td class="table-light">₱{{loan.emp_monthly_income|intcomma}}</td>
-                        <td class="table-warning">Work Number:</td>
-                        <td class="table-light">{{loan.emp_work_no}}</td>
+                        {% if loan.prime_income == "Business" %}
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Job Title/Position:</td>
+                        <td class="table-light" colspan="2">{{loan.job_pos}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Employment Tenure:</td>
+                        <td class="table-light" colspan="1">{{loan.emp_tenure_num}} {{loan.emp_tenure}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Monthly Income:</td>
+                        <td class="table-light" colspan="1">₱{{loan.emp_monthly_income|intcomma}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Work Number:</td>
+                        <td class="table-light" colspan="1">{{loan.emp_work_no}}</td>
                         {% else %}
-                        <td class="table-warning">Business Tenure:</td>
-                        <td class="table-light">{{loan.bsns_tenure_num}} {{loan.bsns_tenure}}</td>
-                        <td class="table-warning">Monthly Income:</td>
-                        <td class="table-light">₱{{loan.bsns_monthly_income|intcomma}}</td>
-                        <td class="table-warning">Work Number:</td>
-                        <td class="table-light">{{loan.bsns_work_no}}</td>
-                        <td class="table-warning">Business Address:</td>
-                        <td class="table-light">{{loan.bsns_unit_no}} {{loan.bsns_condo_name}}, {{loan.bsns_street}}, 
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Business Tenure:</td>
+                        <td class="table-light" colspan="2">{{loan.bsns_tenure_num}} {{loan.bsns_tenure}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Monthly Income:</td>
+                        <td class="table-light" colspan="2">₱{{loan.bsns_monthly_income|intcomma}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Work Number:</td>
+                        <td class="table-light" colspan="2">{{loan.bsns_work_no}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Business Address:</td>
+                        <td class="table-light" colspan="8">{{loan.bsns_unit_no}} {{loan.bsns_condo_name}}, {{loan.bsns_street}}, 
                             {{loan.bsns_subdiv_brgy}}, {{loan.bsns_city}}, {{loan.bsns_municip_prov}}, {{loan.bsns_country}}</td>
                         {% endif %}
                     </tr> 
                 </table>
             </div>
         </div>
+        {% if loan.status == "For Review" %}
+        <div class="card-footer text-right">
+            <button id="submit_button" type="submit" class="btn btn-success login-button">
+                <a href="{% url 'approve-loan' loan.id %}" style="color:white">Approve</a></button>
+            <button id="submit_button" type="submit" class="btn btn-danger login-button">
+                <a href="{% url 'reject-loan' loan.id %}" style="color:white">Reject</a></button>
+        </div>
+        {% endif %}
     </div>
 </div>
 </div>

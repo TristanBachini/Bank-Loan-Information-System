@@ -17,7 +17,6 @@
                                             <th>Middle Name</th>
                                             <th>Date of Application</th>
                                             <th>View/Download</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>                              
@@ -34,12 +33,6 @@
                                                         <button id="submit_button" type="submit" class="btn btn-primary login-button">
                                                             <a href="{% url 'generate-pdf' loan.id %}" style="color:white">Download</a></button>
                                                     </td>
-                                                    <td>
-                                                        <button id="submit_button" type="submit" class="btn btn-success login-button">
-                                                            <a href="{% url 'approve-loan' loan.id %}" style="color:white">Approve</a></button>
-                                                        <button id="submit_button" type="submit" class="btn btn-danger login-button">
-                                                            <a href="{% url 'reject-loan' loan.id %}" style="color:white">Reject</a></button>
-                                                    </td> 
                                                 </tr>
                                         {% endfor %}
                                     </tbody>
