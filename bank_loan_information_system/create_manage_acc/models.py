@@ -5,6 +5,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # from djmoney.models.fields import MoneyField
 from django.conf import settings
 
+
 import datetime
 
 class AccountReg(models.Model):
@@ -44,8 +45,8 @@ class AccountReg(models.Model):
 
 class BankAccount(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    deposit = models.PositiveBigIntegerField()
-    balance = models.PositiveBigIntegerField(default=0)
+    deposit = models.DecimalField(decimal_places=2, max_digits=100)
+    balance = models.DecimalField(default=0, decimal_places=2, max_digits=100)
 
     def result(self):
         return '{}'.format(self.user)

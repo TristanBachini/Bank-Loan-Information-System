@@ -7,6 +7,7 @@ from . import views
 from create_manage_acc.forms import AccountRegForm, BankAccountForm
 from django.contrib.auth.models import Group
 from loans_borrower.models import Loans
+from decimal import Decimal as D
 
 # Create your views here.
 def account_registration(request):
@@ -45,7 +46,7 @@ def deposit_money(request):
     if(request.method == 'POST'):
         bankBal = request.session.get('bankBal')
         #print(bankBal)
-        bankBal = int(request.POST.get('deposit')) + int(bankBal)
+        bankBal = float(request.POST.get('deposit')) + float(bankBal)
         request.session['bankBal'] = bankBal
         print(bankBal)
         form = BankAccountForm({
