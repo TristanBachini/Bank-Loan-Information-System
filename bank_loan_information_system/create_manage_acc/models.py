@@ -28,7 +28,7 @@ class AccountReg(models.Model):
 
     YEARS= [x for x in range(1940,2022)]
 
-    user = models.ForeignKey(User, db_column="user", on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     sex = models.CharField(max_length=100, choices=SEX)
@@ -47,4 +47,4 @@ class BankAccount(models.Model):
     balance = MoneyField(max_digits=100, decimal_places=2, default_currency='PHP')
     
     def result(self):
-        return '{} - {}'.format(self.cleaned_data.user,self.cleaned_data.balance)
+        return '{} - {}'.format(self.data.user,self.data.balance)
