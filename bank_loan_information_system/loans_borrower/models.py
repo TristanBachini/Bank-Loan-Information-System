@@ -45,6 +45,8 @@ class Loans(models.Model):
         ('OFW Non-Immigrant(Government)', 'OFW Non-Immigrant(Government)'),
         ('OFW Non-Immigrant(Private)', 'OFW Non-Immigrant(Private)'),
     )
+    
+    app_date = models.DateTimeField(null=True, blank=True)
 
     status = models.CharField(default='For Review',max_length=100, choices=STATUS, null=True)
 

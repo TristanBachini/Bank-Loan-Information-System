@@ -10,15 +10,18 @@ class LoanApplyForm(forms.ModelForm):
     mobile_num.widget.attrs = {'class': 'form-control', 'placeholder': '+63'}
     birthdate = forms.DateField(
         widget=forms.DateInput(
-            attrs={'class': 'form-control datetimepicker-input', 'id': 'dob', 'placeholder': 'mm-dd-yyyy',
+            attrs={'class': 'form-control datetimepicker-input', 'placeholder': 'mm/dd/yyyy',
                      'data-target': '#datetimepicker1'},
-                     format='%m-%d-%y'
+                     format='%m/%d/%y'
         ),
+        required=False
     )
     class Meta:
         model = Loans
         fields = '__all__'
         widgets = {
+            'app_date': forms.HiddenInput(attrs={'type': 'hidden'}),
+
             'status': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Status'}),
 
             # Loan Deets
