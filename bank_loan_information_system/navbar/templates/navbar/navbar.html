@@ -53,18 +53,18 @@
                     <span>Loan Calculator</span></a>
                 {% if not user.is_authenticated %}
                     <a class="nav-link" href="{% url 'login' %}">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <i class="fas fa-fw fa-cog"></i>
                         <span>Login</span></a>
                     <a class="nav-link" href="{% url 'register' %}">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <i class="fas fa-fw fa-table"></i>
                         <span>Register</span></a>
                 {% else %}
                     {% if request.user|has_group:"borrower" %}
                     <a class="nav-link" href="{% url 'loan-apply' %}">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <i class="fas fa-fw fa-file-alt"></i>
                         <span>Loan</span></a>
                     <a class="nav-link" href="{% url 'view-loan-apps' %}">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <i class="fas fa-fw fa-folder"></i>
                         <span>Loan Applications</span></a>
                         {% if request.user|has_group:"hasbankaccount" %}
                             <a class="nav-link" href="{% url 'deposit-money' %}">
@@ -82,13 +82,13 @@
                     <!-- <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                        <span>Welcome, {{user.get_username}}</span></a> -->
-                    <a class="nav-link" href="{% url 'logout' %}">
+                    <!--<a class="nav-link" href="{% url 'logout' %}">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                       <span>Logout</span></a>
+                       <span>Logout</span></a> -->
                     {% endif %}
                 {% endif %}
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-wrench"></i>
                     <span>Customer Care</span></a>
 
             </li>
