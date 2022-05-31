@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Loans(models.Model):
@@ -78,7 +79,7 @@ class Loans(models.Model):
 
     phone_type = models.CharField(max_length=100, choices=PHONE_TYPE, null=True, blank=True)
     home_num = models.CharField(max_length=100, null=True, blank=True)
-    mobile_num = models.CharField(max_length=100, null=True, blank=True)
+    mobile_num = PhoneNumberField(max_length=100, null=True, blank=True)
     email_add = models.CharField(max_length=100, null=True, blank=True)
 
     prime_income = models.CharField(max_length=100, choices=PRIME_INCOME, null=True, blank=True)

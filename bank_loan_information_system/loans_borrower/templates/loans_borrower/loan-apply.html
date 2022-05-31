@@ -33,7 +33,9 @@
     {{loan_form.make}}
     {{loan_form.model}}
     {{loan_form.sell_price}}
-    {{loan_form.dp_percent}}
+    <div onchange="show()">
+        {{loan_form.dp_percent}}
+    </div>
     {{loan_form.dp_amt}}
     {{loan_form.loan_amt}}
     {{loan_form.no_of_payments}}
@@ -93,6 +95,15 @@
             format: 'MM/DD/YYYY',
         });
     });
+
+    function show(){
+        var price = document.getElementById('sell_price').value;
+        var dp_percent = document.getElementById('dp_percent').value;
+        
+        var dp_amt = price * (dp_percent/100);
+        document.getElementById('dp_amt').value = dp_amt;
+        document.getElementById('loan_amt').value = price - dp_amt;
+    }
 </script>
 
 {% endblock %}

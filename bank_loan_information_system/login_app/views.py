@@ -47,5 +47,4 @@ def register(request):
 
 def logout_page(request):
     logout(request)
-    print("it worked until here tho")
-    return render(request, "main/home.html")
+    return redirect('login')

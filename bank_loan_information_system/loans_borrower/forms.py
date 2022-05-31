@@ -27,10 +27,10 @@ class LoanApplyForm(forms.ModelForm):
             # Loan Deets
             'make': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Make'}),
             'model': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Model'}),
-            'sell_price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Sell Price'}),
-            'dp_percent': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Down-payment %'}),
-            'dp_amt': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Down-payment'}),
-            'loan_amt': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Loan'}),
+            'sell_price': forms.NumberInput(attrs={'class': 'form-control', 'id': 'sell_price', 'placeholder': 'Sell Price'}),
+            'dp_percent': forms.NumberInput(attrs={'class': 'form-control', 'id': 'dp_percent', 'placeholder': 'Down-payment %'}),
+            'dp_amt': forms.NumberInput(attrs={'class': 'form-control','id': 'dp_amt',  'placeholder': 'Down-payment', 'disabled': True}),
+            'loan_amt': forms.NumberInput(attrs={'class': 'form-control', 'id': 'loan_amt', 'placeholder': 'Loan', 'disabled': True}),
             'no_of_payments': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'No. of Payments'}),
 
             # User Deets
