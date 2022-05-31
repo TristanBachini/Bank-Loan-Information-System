@@ -61,3 +61,6 @@ class BankAccountForm(ModelForm):
     class Meta:
         model = BankAccount
         fields = '__all__'
+        widgets = {
+            'user':  HiddenInput(attrs={'type': 'hidden'}),
+        }

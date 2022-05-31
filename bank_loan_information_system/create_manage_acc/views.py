@@ -13,29 +13,7 @@ from loans_borrower.models import Loans
 def account_registration(request):
     user = request.user
     loans = Loans.objects.filter(user=user)
-    # for loan in loans:
-    #     if loan.status == "Approved":
-            
-    group = Group.objects.get(name='hasbankaccount')
     
-    # if(request.method == 'POST'):
-    #     form = AccountRegForm(request.POST)
-    #     print(form.user)
-    #     print(form.errors)
-    #     if form.is_valid():
-    #         bankBal = 0
-    #         user.groups.add(group)
-    #         form.user = request.user
-    #         form.save()
-    #         return render(request, 'create_manage_acc/deposit-money.html', {'loans':loans})
-    # form = AccountRegForm()
-    # return render(request, 'create_manage_acc/create-acc.html', {'form':form})
-
-    user = request.user
-    loans = Loans.objects.filter(user=user)
-    # for loan in loans:
-    #     if loan.status == "Approved":
-            
     group = Group.objects.get(name='hasbankaccount')
     
     if(request.method == 'POST'):
@@ -51,10 +29,8 @@ def account_registration(request):
                 'address': request.POST.get('address'),
                 'phone': request.POST.get('phone')    
             })
-        print(form.errors)
         form.user = request.user
         if form.is_valid():
-            print("valid form")
             user.groups.add(group)
             form.save()
             return render(request, 'create_manage_acc/deposit-money.html', {'loans':loans})
@@ -62,31 +38,17 @@ def account_registration(request):
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
 
 def deposit_money(request):
-
-    print (request.user)
-    #user = BankAccount.objects.get(user=request.user)
-    # if user.balance == 0:
-    #     if(request.method == 'POST'):
-    #         form = BankAccountForm(instance = user)
-    #         if form.is_valid():
-    #             form.user_id = request.user
-    #             form.save()
-    #             bankBal = request.POST.get('balance')
-    #         return render(request, 'create_manage_acc/deposit-money.html', {'form':form})       
-    # else:
-    #     if(request.method == 'POST'):
-    #         bankBal += request.POST.get('balance')
-    #         form = BankAccountForm({'user':user, 'balance':request.POST.get('balance')})
-    #         return render(request, 'create_manage_acc/deposit-money.html', {'form':form})           
-  
-    form = BankAccountForm()
     if(request.method == 'POST'):
         form = BankAccountForm({
                 'user':request.user,
-                'balance': 0})
+                'deposit': request.POST.get('deposit')})
         #print(form.user)
-        print(form.user)
-        print(request.POST.get('balance'))
+        #form = BankAccountForm(request.POST)
+        form.user = request.user
         print(form.errors)
-
+        if form.is_valid():
+            print("valid form")
+            form.save()
+            return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+    form = BankAccountForm()
     return render(request, 'create_manage_acc/deposit-money.html', {'form':form})

@@ -43,8 +43,8 @@ class AccountReg(models.Model):
         return '{} - {}'.format(self.user,self.email)
 
 class BankAccount(models.Model):
-    user = models.ForeignKey(User, db_column="user", on_delete=models.CASCADE, null=True)
-    balance = MoneyField(max_digits=100, decimal_places=2, default_currency='PHP')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    deposit = models.PositiveBigIntegerField()
     
     def result(self):
-        return '{} - {}'.format(self.data.user,self.data.balance)
+        return '{}'.format(self.user)
