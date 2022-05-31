@@ -1,6 +1,5 @@
 global bankBal
 
-import re
 from django.shortcuts import render
 
 from create_manage_acc.models import BankAccount
@@ -31,8 +30,10 @@ def account_registration(request):
             })
         form.user = request.user
         if form.is_valid():
+            bankBal = 0
             user.groups.add(group)
             form.save()
+            print(bankBal)
             return render(request, 'create_manage_acc/deposit-money.html', {'loans':loans})
     form = AccountRegForm()
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
@@ -45,10 +46,16 @@ def deposit_money(request):
         #print(form.user)
         #form = BankAccountForm(request.POST)
         form.user = request.user
+        # if bankBal is None:
+        #     bankBal = 0
+        # else:
+        #     bankBal += int(request.POST.get('deposit'))
+        #     print(bankBal)
         print(form.errors)
         if form.is_valid():
-            print("valid form")
+            #print("valid form")
             form.save()
+            form = BankAccountForm()
             return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
     form = BankAccountForm()
     return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
