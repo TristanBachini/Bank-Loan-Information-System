@@ -16,7 +16,8 @@
                                             <th>First Name</th>
                                             <th>Middle Name</th>
                                             <th>Date of Application</th>
-                                            <th></th>
+                                            <th>View/Download</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>                              
@@ -26,13 +27,19 @@
                                                     <td><a href="{% url 'loan-app' loan.id %}">{{loan.last_name}}</a></td>
                                                     <td><a href="{% url 'loan-app' loan.id %}">{{loan.first_name}}</a></td>
                                                     <td><a href="{% url 'loan-app' loan.id %}">{{loan.middle_name}}</a></td>
-                                                    <td>#</td>
+                                                    <td><a href="{% url 'loan-app' loan.id %}">{{loan.app_date}}</a></td>
                                                     <td>
                                                         <button id="submit_button" type="submit" class="btn btn-primary login-button">
-                                                            <a href="{% url 'loan-app' loan.id %}">View</a></button>
+                                                            <a href="{% url 'loan-app' loan.id %}" style="color:white">View</a></button>
                                                         <button id="submit_button" type="submit" class="btn btn-primary login-button">
-                                                            <a href="{% url 'generate-pdf' loan.id %}">Download</a></button>
+                                                            <a href="{% url 'generate-pdf' loan.id %}" style="color:white">Download</a></button>
                                                     </td>
+                                                    <td>
+                                                        <button id="submit_button" type="submit" class="btn btn-success login-button">
+                                                            <a href="{% url 'approve-loan' loan.id %}" style="color:white">Approve</a></button>
+                                                        <button id="submit_button" type="submit" class="btn btn-danger login-button">
+                                                            <a href="{% url 'reject-loan' loan.id %}" style="color:white">Reject</a></button>
+                                                    </td> 
                                                 </tr>
                                         {% endfor %}
                                     </tbody>

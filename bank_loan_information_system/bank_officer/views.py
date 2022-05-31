@@ -49,6 +49,26 @@ def view_loan_app(request,pk):
     }
     return render(request, 'bank_officer/loan-app.html', data) 
 
+def approve_loan_app(request,pk):
+    loan = Loans.objects.get(id=pk)
+    loan.status = "Approved"
+    loan.save()
+    data = {
+        'loan' : loan,
+    }
+    return render(request, 'bank_officer/review.html', data)
+
+def reject_loan_app(request,pk):
+    loan = Loans.objects.get(id=pk)
+    loan.status = "Rejected"
+    loan.save()
+    data = {
+        'loan' : loan,
+    }
+    return render(request, 'bank_officer/review.html', data)
+
+    
+
 # Generate Loan App to PDF
 def fetch_resources(uri, rel):
     path = os.path.join(uri.replace(settings.STATIC_URL, ""))
