@@ -45,6 +45,7 @@ class AccountReg(models.Model):
 class BankAccount(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     deposit = models.PositiveBigIntegerField()
+    balance = models.PositiveBigIntegerField(default=0)
 
     def result(self):
         return '{}'.format(self.user)

@@ -36,7 +36,6 @@ def account_registration(request):
             request.session['bankBal'] = bankBal
             user.groups.add(group)
             form.save()
-            print("bankBal")
             print(bankBal)
             return redirect('/create-manage-account/deposit-money' ,{'bankBal': bankBal})
     form = AccountRegForm()
@@ -48,24 +47,17 @@ def deposit_money(request):
         #print(bankBal)
         bankBal = int(request.POST.get('deposit')) + int(bankBal)
         request.session['bankBal'] = bankBal
-        # deposit = int(request.POST.get('deposit', ''))
         print(bankBal)
         form = BankAccountForm({
                 'user':request.user,
-                'deposit': request.POST.get('deposit')})
-        #print(bankBal)
-        #form = BankAccountForm(request.POST)
+                'deposit': request.POST.get('deposit'),
+                'balance': bankBal})
         form.user = request.user
-        # if bankBal is None:
-        #     bankBal = 0
-        # else:
-        #     bankBal += int(request.POST.get('deposit'))
-        #     print(bankBal)
         print(form.errors)
         if form.is_valid():
-            #print("valid form")
             form.save()
-            form = BankAccountForm()
+            form = BankAccountForm({
+                'balance': bankBal})
             return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
     form = BankAccountForm()
     return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
