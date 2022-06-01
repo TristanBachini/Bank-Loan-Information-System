@@ -44,6 +44,16 @@ def account_registration(request):
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
 
 def deposit_money(request):
+    latest = BankAccount.objects.latest('id')
+    print(latest.user)
+    loan = Loans.objects.get(user = latest.user)
+    print(loan.app_date)
+
+    #for loop loan in loans
+    #if .get(user = latest.user) then
+    #   if .app_date (m0nth) = date_today then
+    #   minus balance
+    
     if(request.method == 'POST'):
         bankBal = request.session.get('bankBal')
         #print(bankBal)
