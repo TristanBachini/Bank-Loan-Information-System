@@ -54,7 +54,7 @@ class LoanApplyForm(forms.ModelForm):
 
             # User contact
             'phone_type': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Type of Phone'}),
-            'home_num': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Home no.'}),
+            'home_num': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Home no.'}),
             'email_add': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email address'}),
 
             'prime_income': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Primary Income'}),

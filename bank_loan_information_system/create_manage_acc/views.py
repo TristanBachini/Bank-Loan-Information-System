@@ -17,6 +17,7 @@ def account_registration(request):
     group = Group.objects.get(name='hasbankaccount')
     
     if(request.method == 'POST'):
+        form = AccountRegForm()
         form = AccountRegForm(
             {
                 'user': request.user,
@@ -27,7 +28,7 @@ def account_registration(request):
                 'email': request.POST.get('email'),
                 'prefix': request.POST.get('prefix'),
                 'address': request.POST.get('address'),
-                'phone': request.POST.get('phone')    
+                'phone': request.POST.get('phone')
             })
         form.user = request.user
         if form.is_valid():

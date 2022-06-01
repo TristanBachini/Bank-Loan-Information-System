@@ -27,7 +27,6 @@ def viewLoanAppsInfo(request, pk):
 
 def loanApply(request):
     today = datetime.now()
-    print(request.user)
     loan_form = LoanApplyForm()
     if(request.method == "POST"):
         loan_form = LoanApplyForm(request.POST)

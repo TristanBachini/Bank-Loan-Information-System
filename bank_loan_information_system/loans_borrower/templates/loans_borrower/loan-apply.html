@@ -29,37 +29,56 @@
 <form action="" class="create-record-form" method="post">
     {% csrf_token %}
     {{loan_form.status}}
-
-    {{loan_form.make}}
-    {{loan_form.model}}
-    {{loan_form.sell_price}}
-    <div onchange="show()">
-        {{loan_form.dp_percent}}
+    <div class="card">
+        <div class="card-body">
+            <div class="col">
+                <div class="row">
+                    {{loan_form.make}}
+                    {{loan_form.model}}
+                    {{loan_form.sell_price}}
+                </div>
+                <div class="row">
+                    <div onchange="show()">
+                        {{loan_form.dp_percent}}
+                    </div>
+                    {{loan_form.dp_amt}}
+                    {{loan_form.loan_amt}}
+                    {{loan_form.no_of_payments}}
+                </div>
+            </div>
+        </div>
     </div>
-    {{loan_form.dp_amt}}
-    {{loan_form.loan_amt}}
-    {{loan_form.no_of_payments}}
+    
+    <hr>
 
-    {{loan_form.first_name}}
-    {{loan_form.middle_name}}
-    {{loan_form.last_name}}
-    {{loan_form.birthdate}}
-    {{loan_form.civ_status}}
+    <div class="card">
+        <div class="card-body">
+            {{loan_form.first_name}}
+            {{loan_form.middle_name}}
+            {{loan_form.last_name}}
+            {{loan_form.birthdate}}
+            {{loan_form.civ_status}}
+        </div>
+        <div class="card-body">
+            {{loan_form.unit_no}}
+            {{loan_form.condo_name}}
+            {{loan_form.street}}
+            {{loan_form.subdiv_brgy}}
+            {{loan_form.city}}
+            {{loan_form.municip_prov}}
+            {{loan_form.country}}
+            {{loan_form.len_stay}}
+            {{loan_form.len_stay_num}}
+            {{loan_form.home_own}}
+        </div>
+        <div class="card-body">
+            {{loan_form.phone_type}}
+            {{loan_form.home_num}}
+            {{loan_form.email_add}}
+        </div>
+    </div>
 
-    {{loan_form.unit_no}}
-    {{loan_form.condo_name}}
-    {{loan_form.street}}
-    {{loan_form.subdiv_brgy}}
-    {{loan_form.city}}
-    {{loan_form.municip_prov}}
-    {{loan_form.country}}
-    {{loan_form.len_stay}}
-    {{loan_form.len_stay_num}}
-    {{loan_form.home_own}}
-
-    {{loan_form.phone_type}}
-    {{loan_form.home_num}}
-    {{loan_form.email_add}}
+    <hr>
 
     {{loan_form.prime_income}}
 
