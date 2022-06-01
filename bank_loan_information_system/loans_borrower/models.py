@@ -105,6 +105,8 @@ class Loans(models.Model):
     bsns_city = models.CharField(max_length=100, null=True, blank=True)
     bsns_municip_prov = models.CharField(max_length=100, null=True, blank=True)
     bsns_country = models.CharField(max_length=100, null=True, blank=True)
+
+    loan_docs = models.FileField(upload_to='loan_docs/', null=True, blank=True)
     
     # int_rate = models.CharField(max_length=50, null=True)
     # principal = models.IntegerField(null=True, blank=True)

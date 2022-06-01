@@ -23,11 +23,13 @@
 {% endif %}
 <h1 class="h3 mb-2" style="color:#00573f">Loan Application</h1>
 <div class="card shadow mb-4"></div>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="card-header py-3">
+        
+        <div hidden class="card-header py-3">
             <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;">Status: {{loan_form.status}}</strong>
         </div>
+        
         <div class="card-body">
             <div class="row">
                 <table class="table table-bordered">
@@ -134,6 +136,15 @@
                     {{loan_form.bsns_municip_prov}}
                     {{loan_form.bsns_country}} -->
                 
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="9"><b>UPLOAD LOAN DOCUMENTS</b></th>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Documents:</td>
+                        <td class="table-light" colspan="2">{{loan_form.loan_docs}}</td>
+                    </tr>
                 </table>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
