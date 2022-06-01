@@ -128,6 +128,26 @@
                         {% endif %}
                     </tr> 
                 </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="9"><b>LOAN DOCUMENTS</b></th>
+                    </tr>
+                    <tr>
+                        {% if not loan.loan_docs %}
+                        <td class="table-light" colspan="8">
+                            NO DOCUMENTS UPLOADED - Upload Loan Documents for Evaluation to Commence
+                            <br>
+                            <a href="{% url 'loan-docs-upload' loan.id %}" class="btn btn-primary btn-sm">Upload</a>
+                        </td>
+                        {% else %}
+                        <td class="table-light" colspan="8"> 
+                            <a href="/static{{ loan.loan_docs.url }}" class="btn btn-primary btn-sm" target="_blank">
+                                View Documents
+                            </a>
+                        </td>
+                        {% endif %}
+                    </tr> 
+                </table>
             </div>
         </div>
     </div>

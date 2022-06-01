@@ -31,7 +31,7 @@ class LoanApplyForm(forms.ModelForm):
             'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
             'birthdate': forms.NumberInput(attrs={'class': 'form-control', 'type': 'date', 'placeholder': 'mm/dd/yyyy'}),
-            'civ_status': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Civil Status'}),
+            'civ_status': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Civil Status'}),
 
             # User address
             'unit_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Unit no.'}),
@@ -77,4 +77,7 @@ class LoanApplyForm(forms.ModelForm):
             'bsns_city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "City"}),
             'bsns_municip_prov': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Municipality/Province"}),
             'bsns_country': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Country"}),
+
+            # Loan Docs
+            'loan_docs' : forms.FileInput(),
         }

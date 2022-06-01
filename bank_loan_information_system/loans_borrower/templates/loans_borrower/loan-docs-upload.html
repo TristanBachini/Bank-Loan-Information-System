@@ -30,8 +30,9 @@
             <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;">Status: {{loan_form.status}}</strong>
         </div>
         
+        
         <div class="card-body">
-            <div class="row">
+            <div hidden class="row">
                 <table class="table table-bordered">
                     <tr>
                         <th class="table-warning" colspan="8" ><b>VEHICLE INFORMATION</b></th>
@@ -137,16 +138,17 @@
                     {{loan_form.bsns_country}} -->
                 
                 </table>
-                <table class="table table-bordered">
-                    <tr>
-                        <th class="table-warning" colspan="9"><b>UPLOAD LOAN DOCUMENTS</b></th>
-                    </tr>
-                    <tr>
-                        <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Documents:</td>
-                        <td class="table-light" colspan="2">{{loan_form.loan_docs}}</td>
-                    </tr>
-                </table>
+                
             </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th class="table-warning" colspan="9"><b>UPLOAD LOAN DOCUMENTS</b></th>
+                </tr>
+                <tr>
+                    <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Documents:</td>
+                    <td class="table-light" colspan="2">{{loan_form.loan_docs}}</td>
+                </tr>
+            </table>
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
     </form>
