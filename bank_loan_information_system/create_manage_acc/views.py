@@ -8,6 +8,9 @@ from create_manage_acc.forms import AccountRegForm, BankAccountForm
 from django.contrib.auth.models import Group
 from loans_borrower.models import Loans
 from decimal import Decimal as D
+from datetime import date
+from django.db.models.functions import ExtractMonth, ExtractYear
+
 
 # Create your views here.
 def account_registration(request):
@@ -48,12 +51,11 @@ def deposit_money(request):
     print(latest.user)
     loan = Loans.objects.get(user = latest.user)
     print(loan.app_date)
+    #for loan in Loans.object.all()
+        #if loan.user = request.user then
+        #   if .app_date (m0nth) = date.today() then
+        #   latest.balance - (monthjly amortization)
 
-    #for loop loan in loans
-    #if .get(user = latest.user) then
-    #   if .app_date (m0nth) = date_today then
-    #   minus balance
-    
     if(request.method == 'POST'):
         bankBal = request.session.get('bankBal')
         #print(bankBal)
