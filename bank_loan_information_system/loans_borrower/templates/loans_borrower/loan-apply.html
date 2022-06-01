@@ -1,10 +1,5 @@
 {% extends 'navbar/navbar.html' %}
 {% block content %} {% load static %}
-<style>
-    .btn{
-        margin-top: 1%;
-    }
-</style>
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == 'success' %}
@@ -26,95 +21,127 @@
         {% endif %}
     {% endfor %}  
 {% endif %}
-<form action="" class="create-record-form" method="post">
-    {% csrf_token %}
-    {{loan_form.status}}
-    <div class="card">
+<h1 class="h3 mb-2" style="color:#00573f">Loan Application</h1>
+<div class="card shadow mb-4"></div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="card-header py-3">
+            <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;">Status: {{loan_form.status}}</strong>
+        </div>
         <div class="card-body">
-            <div class="col">
-                <div class="row">
-                    {{loan_form.make}}
-                    {{loan_form.model}}
-                    {{loan_form.sell_price}}
-                </div>
-                <div class="row">
-                    <div onchange="show()">
-                        {{loan_form.dp_percent}}
-                    </div>
-                    {{loan_form.dp_amt}}
-                    {{loan_form.loan_amt}}
-                    {{loan_form.no_of_payments}}
-                </div>
+            <div class="row">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="8" ><b>VEHICLE INFORMATION</b></th>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1"><b>Manufacturer:</b></td>
+                        <td class="table-light" colspan="1">{{loan_form.make}}</td>
+                        <td class="table-light" colspan="1"><b>Model:</b></td>
+                        <td class="table-light" colspan="2">{{loan_form.model}}</td>
+                        <td class="table-light" colspan="1"><b>Selling Price:</b></td>
+                        <td class="table-light" colspan="2">{{loan_form.sell_price}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-light"colspan="1" style="font-weight:bold ;">Downpayment Percentage:</td>
+                        <td class="table-light" colspan="1" onchange="show()">{{loan_form.dp_percent}}%</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Downpayment Amount:</td>
+                        <td class="table-light" colspan="1">₱{{loan_form.dp_amt}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Amount:</td>
+                        <td class="table-light" colspan="1">₱{{loan_form.loan_amt}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Number of Payments:</td>
+                        <td class="table-light" colspan="1">{{loan_form.no_of_payments}} Months</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="9"><b>BORROWER INFORMATION</b></th>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">First Name:</td>
+                        <td class="table-light" colspan="2">{{loan_form.first_name}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Middle Name:</td>
+                        <td class="table-light" colspan="2">{{loan_form.middle_name}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Last Name:</td>
+                        <td class="table-light" colspan="2">{{loan_form.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Birth Date:</td>
+                        <td class="table-light" colspan="1">{{loan_form.birthdate}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Civil Status:</td>
+                        <td class="table-light" colspan="2">{{loan_form.civ_status}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Home Ownership</td>
+                        <td class="table-light" colspan="1">{{loan_form.home_own}}</td>
+                        <td class="table-light"colspan="1" style="font-weight:bold ;">Length of Stay:</td>
+                        <td class="table-light" colspan="1">{{loan_form.len_stay_num}} {{loan_form.len_stay}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Home Address:</td>
+                        <td class="table-light" colspan="1">{{loan_form.unit_no}}</td>
+                        <td class="table-light" colspan="1">{{loan_form.condo_name}}</td>
+                        <td class="table-light" colspan="1">{{loan_form.street}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1">{{loan_form.subdiv_brgy}}</td>
+                        <td class="table-light" colspan="1">{{loan_form.city}}</td>
+                        <td class="table-light" colspan="1">{{loan_form.municip_prov}}</td>
+                        <td class="table-light" colspan="1">{{loan_form.country}}</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="8"><b>CONTACT INFORMATION</b></th>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Phone Type:</td>
+                        <td class="table-light" colspan="1">{{loan_form.phone_type}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Home Number: </td>
+                        <td class="table-light" colspan="1">{{loan_form.home_num}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Mobile Number:</td>
+                        <td class="table-light" colspan="1">{{loan_form.mobile_num}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Email Address:</td>
+                        <td class="table-light" colspan="1">{{loan_form.email_add}}</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="9"><b>EMPLOYMENT/BUSINESS INFORMATION</b></th>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Primary Source of Income</td>
+                        <td class="table-light" colspan="2">{{loan_form.prime_income}}</td>
+                    </tr>
+                    <!-- {{loan_form.emp_type}}
+                    {{loan_form.emp_name}}
+                    {{loan_form.job_pos}}
+                    {{loan_form.emp_tenure}}
+                    {{loan_form.emp_tenure_num}}
+                    {{loan_form.emp_monthly_income}}
+                    {{loan_form.emp_work_no}}
+                
+                    {{loan_form.bsns_type}}
+                    {{loan_form.bsns_name}}
+                    {{loan_form.bsns_tenure}}
+                    {{loan_form.bsns_tenure_num}}
+                    {{loan_form.bsns_monthly_income}}
+                    {{loan_form.bsns_work_no}}
+                
+                    {{loan_form.bsns_unit_no}}
+                    {{loan_form.bsns_condo_name}}
+                    {{loan_form.bsns_street}}
+                    {{loan_form.bsns_subdiv_brgy}}
+                    {{loan_form.bsns_city}}
+                    {{loan_form.bsns_municip_prov}}
+                    {{loan_form.bsns_country}} -->
+                
+                </table>
             </div>
+            <button type="submit" class="btn btn-success">Submit</button>
         </div>
-    </div>
-    
-    <hr>
+    </form>
+</div>
 
-    <div class="card">
-        <div class="card-body">
-            {{loan_form.first_name}}
-            {{loan_form.middle_name}}
-            {{loan_form.last_name}}
-            {{loan_form.birthdate}}
-            {{loan_form.civ_status}}
-        </div>
-        <div class="card-body">
-            {{loan_form.unit_no}}
-            {{loan_form.condo_name}}
-            {{loan_form.street}}
-            {{loan_form.subdiv_brgy}}
-            {{loan_form.city}}
-            {{loan_form.municip_prov}}
-            {{loan_form.country}}
-            {{loan_form.len_stay}}
-            {{loan_form.len_stay_num}}
-            {{loan_form.home_own}}
-        </div>
-        <div class="card-body">
-            {{loan_form.phone_type}}
-            {{loan_form.home_num}}
-            {{loan_form.email_add}}
-        </div>
-    </div>
-
-    <hr>
-
-    {{loan_form.prime_income}}
-
-    {{loan_form.emp_type}}
-    {{loan_form.emp_name}}
-    {{loan_form.job_pos}}
-    {{loan_form.emp_tenure}}
-    {{loan_form.emp_tenure_num}}
-    {{loan_form.emp_monthly_income}}
-    {{loan_form.emp_work_no}}
-
-    {{loan_form.bsns_type}}
-    {{loan_form.bsns_name}}
-    {{loan_form.bsns_tenure}}
-    {{loan_form.bsns_tenure_num}}
-    {{loan_form.bsns_monthly_income}}
-    {{loan_form.bsns_work_no}}
-
-    {{loan_form.bsns_unit_no}}
-    {{loan_form.bsns_condo_name}}
-    {{loan_form.bsns_street}}
-    {{loan_form.bsns_subdiv_brgy}}
-    {{loan_form.bsns_city}}
-    {{loan_form.bsns_municip_prov}}
-    {{loan_form.bsns_country}}
-
-
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
 <script>
-    $(function () {
-        $("#datetimepicker").datetimepicker({
-            format: 'MM/DD/YYYY',
-        });
-    });
-
     function show(){
         var price = document.getElementById('sell_price').value;
         var dp_percent = document.getElementById('dp_percent').value;

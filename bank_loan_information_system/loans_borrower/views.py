@@ -30,11 +30,11 @@ def loanApply(request):
     loan_form = LoanApplyForm()
     if(request.method == "POST"):
         loan_form = LoanApplyForm(request.POST)
-
         if(loan_form.is_valid()):
             temp = loan_form.save(commit=False)
             temp.user = request.user
             temp.app_date = today
+            print(request.POST)
             temp.save()
             messages.success(request, 'Application submitted.')
         else:

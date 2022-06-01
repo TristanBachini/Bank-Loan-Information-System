@@ -1,37 +1,37 @@
 {% extends 'navbar/navbar.html' %}
-{% block content %} {% load static %}
-{% load humanize %}
+{% load static %}
+{% block content %}
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h3 class="m-0 font-weight-bold" style="color:#00573f">Loan Applications</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Application No.</th>
+                                            <th>Last Name</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Date of Application</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>                              
+                                        {% for loan in loans %}
+                                                <tr onclick="window.location='{% url 'view-loan-apps-info' loan.id %}'">
+                                                    <td>{{loan.id}}</a></td>
+                                                    <td>{{loan.last_name}}</td>
+                                                    <td>{{loan.first_name}}</td>
+                                                    <td>{{loan.middle_name}}</td>
+                                                    <td>{{loan.app_date}}</td>
+                                                </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-
-<body>
-<div class="container-fluid" style="margin-top: 1%; padding:1%;">
-  <div class="row">
-    <div class="col-lg">
-        <table id="rows" class="table table-bordered table-hover">
-            <thead>
-                <th>Application No</th>
-                <th>Brand</th>
-                <th>Loan Amount</th>
-                <th>Down Payment Percentage</th>
-                <th>Number of Payments</th>
-                <th>Status</th>
-            </thead>
-            {% for loan in loans %}
-            <tbody>
-                <tr onclick="window.location='{% url 'view-loan-apps-info' loan.id %}'">
-                    <td>{{loan.id}}</td>
-                    <td>{{loan.make}}</td>
-                    <td>₱{{loan.loan_amt|intcomma}}</td>
-                    <td>{{loan.dp_percent}}%</td>
-                    <td>{{loan.no_of_payments}}</td>
-                    <td>{{loan.status}}</td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
-    </div>
-  </div>
-</div>
-</body>
-{% endblock %}
-  
+{% endblock content %}

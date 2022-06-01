@@ -24,7 +24,6 @@ class Loans(models.Model):
 
     HOME_OWN = (
         ('Mortgage', 'Mortgage'),
-        ('Owned', 'Owned'),
         ('Rented', 'Rented'),
         ('Owned', 'Owned'),
         ('Used Free/Living with Parents/Relatives', 'Used Free/Living with Parents/Relatives'),
@@ -54,7 +53,7 @@ class Loans(models.Model):
     make = models.CharField(max_length=100, null=True, blank=True)
     model = models.CharField(max_length=100, null=True, blank=True)
     sell_price = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=True)
-    dp_percent = models.IntegerField(null=True, blank=True)
+    dp_percent = models.PositiveIntegerField(null=True, blank=True)
     dp_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=True)
     loan_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=True)
     no_of_payments = models.IntegerField(null=True, blank=True)

@@ -8,14 +8,6 @@ class LoanApplyForm(forms.ModelForm):
         widget=PhoneNumberInternationalFallbackWidget, required=False,
     )
     mobile_num.widget.attrs = {'class': 'form-control', 'placeholder': '+63'}
-    birthdate = forms.DateField(
-        widget=forms.DateInput(
-            attrs={'class': 'form-control datetimepicker-input', 'placeholder': 'mm/dd/yyyy',
-                     'data-target': '#datetimepicker1'},
-                     format='%m/%d/%y'
-        ),
-        required=False
-    )
     class Meta:
         model = Loans
         fields = '__all__'
@@ -29,8 +21,8 @@ class LoanApplyForm(forms.ModelForm):
             'model': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Model'}),
             'sell_price': forms.NumberInput(attrs={'class': 'form-control', 'id': 'sell_price', 'placeholder': 'Sell Price'}),
             'dp_percent': forms.NumberInput(attrs={'class': 'form-control', 'id': 'dp_percent', 'placeholder': 'Down-payment %'}),
-            'dp_amt': forms.NumberInput(attrs={'class': 'form-control','id': 'dp_amt',  'placeholder': 'Down-payment', 'disabled': True}),
-            'loan_amt': forms.NumberInput(attrs={'class': 'form-control', 'id': 'loan_amt', 'placeholder': 'Loan', 'disabled': True}),
+            'dp_amt': forms.NumberInput(attrs={'class': 'form-control','id': 'dp_amt',  'placeholder': 'Down-payment', }),
+            'loan_amt': forms.NumberInput(attrs={'class': 'form-control', 'id': 'loan_amt', 'placeholder': 'Loan', }),
             'no_of_payments': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'No. of Payments'}),
 
             # User Deets
@@ -38,6 +30,7 @@ class LoanApplyForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
             'middle_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Middle Name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
+            'birthdate': forms.NumberInput(attrs={'class': 'form-control', 'type': 'date', 'placeholder': 'mm/dd/yyyy'}),
             'civ_status': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Civil Status'}),
 
             # User address
