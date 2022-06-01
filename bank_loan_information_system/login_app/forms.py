@@ -14,9 +14,9 @@ from django.contrib.auth import get_user_model
 
 
 class UserForm(UserCreationForm):
-    attrs = {'class': 'form-control', 'id': 'floatingInput',
+    attrs = {'class': 'form-control form-control-user', 'id': 'floatingInput',
              'placeholder': 'Enter Password', 'required': True}
-    attrs1 = {'class': 'form-control', 'id': 'floatingInput',
+    attrs1 = {'class': 'form-control form-control-user', 'id': 'floatingInput',
              'placeholder': 'Re-Enter Password', 'required': True}
     password1 = CharField(widget=PasswordInput(attrs=attrs))
     password2 = CharField(widget=PasswordInput(attrs=attrs1))
@@ -27,8 +27,8 @@ class UserForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'username',
                   'email', 'password1', 'password2']
         widgets = {
-            'first_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'First name', 'aria-label': 'First name', 'required': True}),
-            'last_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Last name', 'aria-label': 'Last name', 'required': True}),
-            'username': TextInput(attrs={'class': 'form-control', 'placeholder': 'Username', 'aria-label': 'Username', 'required': True}),
-            'email': TextInput(attrs={'class': 'form-control', 'placeholder': 'Email', 'aria-label': 'Email', 'required': True}),
+            'first_name': TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'First name', 'aria-label': 'First name', 'required': True}),
+            'last_name': TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Last name', 'aria-label': 'Last name', 'required': True}),
+            'username': TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Username', 'aria-label': 'Username', 'required': True}),
+            'email': TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Email', 'aria-label': 'Email', 'required': True}),
         }
