@@ -1,6 +1,9 @@
-from django.shortcuts import render
-from django.contrib.auth import logout
 from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+<<<<<<< HEAD
+from django.shortcuts import render, redirect
+=======
+>>>>>>> f8a1b70ae6120be136b3cf3c2476a833fb9ae360
 from loans_borrower.models import Loans
 from loans_borrower.forms import *
 # for generating pdf
@@ -56,7 +59,7 @@ def approve_loan_app(request,pk):
     data = {
         'loan' : loan,
     }
-    return render(request, 'bank_officer/review.html', data)
+    return redirect ('review')
 
 def reject_loan_app(request,pk):
     loan = Loans.objects.get(id=pk)
@@ -65,7 +68,7 @@ def reject_loan_app(request,pk):
     data = {
         'loan' : loan,
     }
-    return render(request, 'bank_officer/review.html', data)
+    return redirect ('review')
 
     
 
