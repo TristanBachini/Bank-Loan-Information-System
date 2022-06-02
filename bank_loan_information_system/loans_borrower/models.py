@@ -52,7 +52,7 @@ class Loans(models.Model):
         ('In-Loan Default', 'In-Loan Default'),
         ('Completed', 'Completed'),
     )
-    
+
     app_date = models.DateTimeField(null=True, blank=True)
 
     status = models.CharField(default='For Review',max_length=100, choices=STATUS, null=True)
@@ -84,8 +84,8 @@ class Loans(models.Model):
     home_own = models.CharField(max_length=100, choices=HOME_OWN, null=True, blank=True)
 
     phone_type = models.CharField(max_length=100, choices=PHONE_TYPE, null=True, blank=False)
-    home_num = models.CharField(max_length=100, null=True, blank=False)
-    mobile_num = PhoneNumberField(max_length=100, null=True, blank=False)
+    home_num = models.CharField(max_length=100, null=True, blank=True)
+    mobile_num = PhoneNumberField(max_length=100, null=True, blank=True)
     email_add = models.CharField(max_length=100, null=True, blank=False)
 
     prime_income = models.CharField(max_length=100, choices=PRIME_INCOME, null=True, blank=False)

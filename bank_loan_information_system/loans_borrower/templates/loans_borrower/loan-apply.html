@@ -42,20 +42,24 @@
                         <th class="table-warning" colspan="9" ><b>VEHICLE INFORMATION</b></th>
                     </tr>
                     <tr>
-                        <td class="table-light" colspan="2"><b>Manufacturer:</b></td>
-                        <td class="table-light" colspan="1">{{loan_form.make}}</td>
+                        <td class="table-light" colspan="1"><b>Manufacturer:</b></td>
+                        <td class="table-light" colspan="2">{{loan_form.make}}</td>
                         <td class="table-light" colspan="1"><b>Model:</b></td>
                         <td class="table-light" colspan="2">{{loan_form.model}}</td>
                         <td class="table-light" colspan="1"><b>Selling Price:</b></td>
                         <td class="table-light" colspan="2">{{loan_form.sell_price}}</td>
                     </tr>
                     <tr>
-                        <td class="table-light"colspan="2" style="font-weight:bold ;">Downpayment Percentage:</td>
-                        <td class="table-light" colspan="1" onchange="show()">{{loan_form.dp_percent}}</td>
-                        <td class="table-light" colspan="2" style="font-weight:bold ;">Downpayment Amount:</td>
-                        <td class="table-light" colspan="1">{{loan_form.dp_amt}}</td>
-                        <td class="table-light" colspan="2" style="font-weight:bold ;">Loan Amount:</td>
-                        <td class="table-light" colspan="1">{{loan_form.loan_amt}}</td>
+                        <td class="table-light"colspan="1" style="font-weight:bold ;">Downpayment Percentage:</td>
+                        <td class="table-light" colspan="2" onchange="show()">{{loan_form.dp_percent}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Downpayment Amount:</td>
+                        <td class="table-light" colspan="2">{{loan_form.dp_amt}}</td>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Amount:</td>
+                        <td class="table-light" colspan="2">{{loan_form.loan_amt}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-light" colspan="1" style="font-weight:bold ;">Number of Payments:</td>
+                        <td class="table-light" colspan="1">{{loan_form.no_of_payments}}</td>
                     </tr>
                 </table>
                 <table class="table table-bordered">
