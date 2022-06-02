@@ -60,8 +60,8 @@ def deposit_money(request):
                     })
             if form.is_valid():
                 form.save()
-                return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
-        return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+                return render(request, 'create_manage_acc/deposit-money.html', {'form':form, 'bank_bal': bankBal})
+        return render(request, 'create_manage_acc/deposit-money.html', {'form':form, 'bank_bal': bankBal})
     print("daan")          
     bank_acc = BankAccount.objects.filter(user = request.user).latest('id')
     bankBal = bank_acc.balance
@@ -119,7 +119,7 @@ def deposit_money(request):
             'deposit': request.POST.get('deposit'),
             'balance': post.balance
             })
-            return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+            return render(request, 'create_manage_acc/deposit-money.html', {'form':form, 'bank_bal': bankBal})
 
     form = BankAccountForm()
-    return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+    return render(request, 'create_manage_acc/deposit-money.html', {'form':form, 'bank_bal': bankBal})
