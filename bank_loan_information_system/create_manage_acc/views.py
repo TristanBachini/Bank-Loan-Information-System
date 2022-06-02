@@ -19,7 +19,6 @@ def account_registration(request):
     group = Group.objects.get(name='hasbankaccount')
     
     if(request.method == 'POST'):
-        form = AccountRegForm()
         form = AccountRegForm(
             {
                 'user': request.user,
@@ -55,13 +54,13 @@ def deposit_money(request):
     print(today.strftime("%m %d"))
     
     
-    loan = Loans.objects.get(user = bank_acc.user)
-    print(loan.app_date.strftime("%m %d"))
-    for loan in Loans.objects.filter(user = bank_acc.user):
-        #if loan.user = request.user then
-        #   if .app_date (m0nth) = date.today() then
-        #   latest.balance - (monthjly amortization)
-        print(loan)
+    # loan = Loans.objects.get(user = bank_acc.user)
+    # print(loan.app_date.strftime("%m %d"))
+    # for loan in Loans.objects.filter(user = bank_acc.user):
+    #     #if loan.user = request.user then
+    #     #   if .app_date (m0nth) = date.today() then
+    #     #   latest.balance - (monthjly amortization)
+    #     print(loan)
     if(request.method == 'POST'):
         #bankBal = request.session.get('bankBal')
         #print(bankBal)
