@@ -24,6 +24,7 @@ class LoanApplyForm(forms.ModelForm):
             'dp_amt': forms.NumberInput(attrs={'class': 'form-control','id': 'dp_amt',  'placeholder': 'Down-payment', }),
             'loan_amt': forms.NumberInput(attrs={'class': 'form-control', 'id': 'loan_amt', 'placeholder': 'Loan', }),
             'no_of_payments': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'No. of Payments'}),
+            'loan_bal': forms.NumberInput(attrs={'class': 'form-control', 'id': 'loan_bal', 'placeholder': 'Loan', }),
 
             # User Deets
             'user': forms.HiddenInput(attrs={'type': 'hidden'}),

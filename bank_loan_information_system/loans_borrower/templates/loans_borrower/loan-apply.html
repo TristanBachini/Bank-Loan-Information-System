@@ -33,6 +33,7 @@
         
         <div hidden class="card-header py-3">
             <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;">Status: {{loan_form.status}}</strong>
+            <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;">Loan Balance: {{loan_form.loan_bal}}</strong>        
         </div>
         
         <div class="card-body">
@@ -201,6 +202,9 @@
         var dp_amt = price * (dp_percent/100);
         document.getElementById('dp_amt').value = dp_amt;
         document.getElementById('loan_amt').value = price - dp_amt;
+
+        var loan_bal = document.getElementById('loan_amt').value;
+        document.getElementById('loan_bal').value = loan_bal;
     }
 
     function swap(){

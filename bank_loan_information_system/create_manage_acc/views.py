@@ -86,13 +86,30 @@ def deposit_money(request):
                         due = True
                         num_of_months = float(loan.no_of_payments)
                         loan_amt = float(loan.loan_amt)
+                        loan_bal = float(loan.loan_bal)
                         percentage = 0.0525
                         monthly_pmt = pmt(percentage, loan_amt, num_of_months)
                         print("Monthly PMT")
                         print(monthly_pmt)
+                        print("loan balance: ")
+                        print(loan_bal)
                         # print(bankBal)
                         bankBal -= monthly_pmt
-                        loan_amt -= monthly_pmt
+                        loan_bal -= monthly_pmt
+                        loan.loan_bal = "{:.2f}".format(loan_bal)
+                        if bankBal < monthly_pmt:
+                            BankAccount.objects.filter(user=request.user).delete()
+                            print("Bank account deleted")
+                            user = request.user
+                            group = Group.objects.get(name='hasbankaccount') 
+                            user.groups.remove(group)
+                            loan.loan_tag = "Delinquent"
+                            return render(request, 'bank_calculator/loancalculator.html')
+                        if(loan.loan_bal <= 0):
+                            loan.loan_tag = "Completed"
+                        loan.save()
+                        print("new loan bal:")
+                        print(loan.loan_bal)
                         print(bankBal)
             post.balance = "{:.2f}".format(bankBal)
             #print(form.balance)

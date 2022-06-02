@@ -7,7 +7,15 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
+        {% if loan.status == "Approved" %}
+            {% if loan.status == null %}
+            <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;"> Status: {{loan.status}}</strong>
+            {% else %}
+            <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;"> Loan Tag: {{loan.loan_tag}}</strong>
+            {% endif %}
+        {% else %}
         <strong class="m-0 font-weight-bold text-primary" style="font-size: 20px;"> Status: {{loan.status}}</strong>
+        {% endif %}
     </div>
     <div class="card-header py-2">
         <i style="text-align: right ;"> App No: {{loan.id}} | Date of Appplication:  {{loan.app_date}}</i> 
@@ -128,8 +136,29 @@
                         {% endif %}
                     </tr> 
                 </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="table-warning" colspan="9"><b>LOAN DOCUMENTS</b></th>
+                    </tr>
+                    <tr>
+                        {% if not loan.loan_docs %}
+                        <td class="table-light" colspan="8">
+                            NO DOCUMENTS UPLOADED - Upload Loan Documents for Evaluation to Commence
+                            <br>
+                            <a href="{% url 'loan-docs-upload' loan.id %}" class="btn btn-primary btn-sm">Upload</a>
+                        </td>
+                        {% else %}
+                        <td class="table-light" colspan="8"> 
+                            <a href="/static{{ loan.loan_docs.url }}" class="btn btn-primary btn-sm" target="_blank">
+                                View Documents
+                            </a>
+                        </td>
+                        {% endif %}
+                    </tr> 
+                </table>
             </div>
         </div>
+       
         {% if loan.status == "For Review" %}
         <div class="card-footer text-right">
             <button id="submit_button" type="submit" class="btn btn-success login-button">
