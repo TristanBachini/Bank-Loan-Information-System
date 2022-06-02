@@ -24,7 +24,7 @@
                                                         For Review</div>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{review}}</div>
                                                 </div>
-                                                <div class="col-auto">
+                                                <div class="col-auto" onclick="window.location='{% url 'review' %}'">
                                                     <a class="btn btn-primary btn-circle btn-lg" data-toggle="modal" data-target="#alabangIsolationModal">
                                                         <i class="fas fa-calendar"></i>
                                                     </a>
@@ -44,7 +44,7 @@
                                                         Approved Loans</div>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{approved}}</div>
                                                 </div>
-                                                <div class="col-auto">
+                                                <div class="col-auto" onclick="window.location='{% url 'approved' %}'">
                                                     <a class="btn btn-success btn-circle btn-lg" data-toggle="modal" data-target="#alabangHospitalModal">
                                                         <i class="fas fa-clipboard-list"></i>
                                                     </a>   
@@ -64,7 +64,7 @@
                                                     </div>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{rejected}}</div>
                                                 </div>
-                                                <div class="col-auto">
+                                                <div class="col-auto" onclick="window.location='{% url 'rejected' %}'">
                                                     <a class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#alabangFacilityModal">
                                                         <i class="fas fa-table"></i>
                                                     </a> 
