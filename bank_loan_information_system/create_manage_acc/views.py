@@ -78,16 +78,20 @@ def deposit_money(request):
         if form.is_valid():
             today = datetime.datetime.now()
             post  = form.save(commit = False)
-            for loan in Loans.objects.filter(user = request.user, status="Approved").exclude(loan_tag="Completed"):
-                print(loan.app_date.strftime("%m %d"))
-                print(today.strftime("%m %d"))
+            for loan in Loans.objects.exclude(loan_tag="Completed").filter(user = request.user, status="Approved"):
+                #print(loan.app_date.strftime("%m %d"))
+                #print(today.strftime("%m %d"))
                 if(loan.app_date.strftime("%m %d") == today.strftime("%m %d")):
                         due = True
                         num_of_months = float(loan.no_of_payments)
                         loan_amt = float(loan.loan_amt)
-                        loan_bal = float(loan.loan_bal)
+                        if loan.loan_bal is None:
+                            loan_bal = 0
+                        else:
+                            loan_bal = float(loan.loan_bal)
                         percentage = 0.0525
                         monthly_pmt = pmt(percentage, loan_amt, num_of_months)
+                        monthly_pmt = float(monthly_pmt)
                         print("Monthly PMT")
                         print(monthly_pmt)
                         print("loan balance: ")
