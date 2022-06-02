@@ -102,12 +102,14 @@
             </li>
 
             <!-- Divider -->
+            {% if user.is_authenticated %}
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>
+            {% endif %}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
