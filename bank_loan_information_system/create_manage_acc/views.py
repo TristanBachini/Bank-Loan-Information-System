@@ -32,12 +32,14 @@ def account_registration(request):
                 'address': request.POST.get('address'),
                 'phone': request.POST.get('phone')
             })
+        print(form.errors)
         if form.is_valid():
             bankBal = request.session.get('bankBal')
             if bankBal is None:
                 bankBal = 0
             request.session['bankBal'] = bankBal
             user.groups.add(group)
+            print("valid form")
             form.save()
             print(bankBal)
             return redirect('/create-manage-account/deposit-money' ,{'bankBal': bankBal})
@@ -95,7 +97,7 @@ def deposit_money(request):
                         bankBal -= monthly_pmt
                         loan_amt -= monthly_pmt
                         print(bankBal)
-            post.balance = bankBal
+            post.balance = "{:.2f}".format(bankBal)
             #print(form.balance)
             post.save()
             form = BankAccountForm({
