@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import logout
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from loans_borrower.models import Loans
 from loans_borrower.forms import *
 # for generating pdf
@@ -98,4 +98,4 @@ class GeneratePDF(View):
 def logout_page(request):
     logout(request)
     print("it worked until here tho")
-    return render(request, "main/home.html")
+    return redirect("/auth/logout")
