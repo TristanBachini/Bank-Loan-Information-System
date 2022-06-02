@@ -1,44 +1,55 @@
 {% extends 'bank_officer/navbar.html' %}
 {% load static %}
 {% block content %}
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h3 class="m-0 font-weight-bold" style="color:#00573f">Rejected Loan Applications</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Application No.</th>
-                                            <th>Last Name</th>
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Date of Application</th>
-                                            <th>View/Download</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>                                    
-                                        {% for loan in loans %}
-                                                <tr onclick="window.location='{% url 'loan-app' loan.id %}'">
-                                                    <td>{{loan.id}}</a></td>
-                                                    <td>{{loan.last_name}}</td>
-                                                    <td>{{loan.first_name}}</td>
-                                                    <td>{{loan.middle_name}}</td>
-                                                    <td>{{loan.app_date}}</td>
-                                                    <td>
-                                                        <button id="submit_button" type="submit" class="btn btn-primary login-button">
-                                                            <a href="{% url 'loan-app' loan.id %}" style="color:white">View</a></button>
-                                                        <button id="submit_button" type="submit" class="btn btn-primary login-button">
-                                                            <a href="{% url 'generate-pdf' loan.id %}" style="color:white">Download</a></button>
-                                                    </td>
-                                                </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold" style="color:#00573f">Rejected Loan Applications</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table border="0" cellspacing="5" cellpadding="5">
+                <tbody><tr>
+                    <td>Minimum Loan Amount:</td>
+                    <td><input type="text" id="min" name="min"></td>
+                </tr>
+                <tr>
+                    <td>Maximum Loan Amount:</td>
+                    <td><input type="text" id="max" name="max"></td>
+                </tr>
+                </tbody></table>
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Application No.</th>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Loan Amount</th>
+                            <th>Date of Application</th>
+                            <th>View/Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for loan in loans %}
+                            <tr onclick="window.location='{% url 'loan-app' loan.id %}'">
+                                <td>{{loan.id}}</a></td>
+                                <td>{{loan.last_name}}</td>
+                                <td>{{loan.first_name}}</td>
+                                <td>{{loan.middle_name}}</td>
+                                <td>{{loan.loan_amt}}</td>
+                                <td>{{loan.app_date}}</td>
+                                <td>
+                                    <button id="submit_button" type="submit" class="btn btn-primary login-button">
+                                    <a href="{% url 'loan-app' loan.id %}" style="color:white">View</a></button>
+                                    <button id="submit_button" type="submit" class="btn btn-primary login-button">
+                                    <a href="{% url 'generate-pdf' loan.id %}" style="color:white">Download</a></button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}
