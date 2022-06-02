@@ -64,7 +64,7 @@ class Loans(models.Model):
     dp_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=False)
     loan_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=False)
     no_of_payments = models.IntegerField(null=True, blank=False)
-    loan_bal = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=True)
+    loan_bal = models.DecimalField(default=0,max_digits=50, decimal_places=2, null=True, blank=True)
     
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=100, null=True, blank=False)

@@ -55,6 +55,8 @@ class AccountRegForm(ModelForm):
             'marital_status':  Select(attrs={'class': 'form-control'}),
             'phone' : TextInput(attrs={'class': 'form-control', 'placeholder': 'Mobile', 'aria-label': 'Mobile', 'required': False}),
             'birth_date': DateInput({'class': 'form-control', 'type': 'date'}),
+            'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email', 'aria-label': 'Email', 'required': True}),
+            'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address', 'aria-label': 'Address', 'required': True}),
         }
 
 class BankAccountForm(ModelForm):

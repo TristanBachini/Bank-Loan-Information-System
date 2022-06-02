@@ -98,12 +98,12 @@ def deposit_money(request):
                         loan_bal -= monthly_pmt
                         loan.loan_bal = "{:.2f}".format(loan_bal)
                         if bankBal < monthly_pmt:
+                            loan.loan_tag = "Delinquent"
                             BankAccount.objects.filter(user=request.user).delete()
                             print("Bank account deleted")
                             user = request.user
                             group = Group.objects.get(name='hasbankaccount') 
                             user.groups.remove(group)
-                            loan.loan_tag = "Delinquent"
                             return render(request, 'bank_calculator/loancalculator.html')
                         if(loan.loan_bal <= 0):
                             loan.loan_tag = "Completed"
