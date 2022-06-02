@@ -70,7 +70,6 @@ def deposit_money(request):
     form = BankAccountForm()
     if(request.method == 'POST'):
         #bankBal = request.session.get('bankBal')
-        print("daan2")  
         bankBal = float(request.POST.get('deposit')) + float(bankBal)
         form = BankAccountForm({
             'user':request.user,
@@ -78,11 +77,9 @@ def deposit_money(request):
             'balance': bankBal
             })
         if form.is_valid():
-            print("daan3")  
             today = datetime.datetime.now()
-            due = False
             post  = form.save(commit = False)
-            for loan in Loans.objects.filter(user = request.user):
+            for loan in Loans.objects.filter(user = request.user, status="Approved"):
                 print(loan.app_date.strftime("%m %d"))
                 print(today.strftime("%m %d"))
                 if(loan.app_date.strftime("%m %d") == today.strftime("%m %d")):
