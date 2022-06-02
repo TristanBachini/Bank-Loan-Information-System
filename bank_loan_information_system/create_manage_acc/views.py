@@ -60,9 +60,8 @@ def deposit_money(request):
                     })
             if form.is_valid():
                 form.save()
-                return render(request, 'create_manage_acc/deposit-money.html', {'form':form, 'bank_bal': bankBal})
-        return render(request, 'create_manage_acc/deposit-money.html', {'form':form, 'bank_bal': bankBal})
-    print("daan")          
+                return render(request, 'create_manage_acc/deposit-money.html', {'form':form, })
+        return render(request, 'create_manage_acc/deposit-money.html', {'form':form, })        
     bank_acc = BankAccount.objects.filter(user = request.user).latest('id')
     bankBal = bank_acc.balance
     if bankBal is None:
@@ -79,7 +78,7 @@ def deposit_money(request):
         if form.is_valid():
             today = datetime.datetime.now()
             post  = form.save(commit = False)
-            for loan in Loans.objects.filter(user = request.user, status="Approved"):
+            for loan in Loans.objects.filter(user = request.user, status="Approved").exclude(loan_tag="Completed"):
                 print(loan.app_date.strftime("%m %d"))
                 print(today.strftime("%m %d"))
                 if(loan.app_date.strftime("%m %d") == today.strftime("%m %d")):
@@ -99,19 +98,20 @@ def deposit_money(request):
                         loan.loan_bal = "{:.2f}".format(loan_bal)
                         if bankBal < monthly_pmt:
                             loan.loan_tag = "Delinquent"
-                            BankAccount.objects.filter(user=request.user).delete()
-                            print("Bank account deleted")
-                            user = request.user
-                            group = Group.objects.get(name='hasbankaccount') 
-                            user.groups.remove(group)
-                            return render(request, 'bank_calculator/loancalculator.html')
-                        if(loan.loan_bal <= 0):
+                            # BankAccount.objects.filter(user=request.user).delete()
+                            # print("Bank account deleted")
+                            # user = request.user
+                            # group = Group.objects.get(name='hasbankaccount') 
+                            # user.groups.remove(group)
+                            # return render(request, 'bank_calculator/loancalculator.html')
+                        if(float(loan.loan_bal) <= 0):
                             loan.loan_tag = "Completed"
                         loan.save()
                         print("new loan bal:")
                         print(loan.loan_bal)
                         print(bankBal)
-            post.balance = "{:.2f}".format(bankBal)
+                        bankBal = "{:.2f}".format(bankBal)
+            post.balance = bankBal
             #print(form.balance)
             post.save()
             form = BankAccountForm({
