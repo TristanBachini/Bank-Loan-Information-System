@@ -95,22 +95,12 @@ def deposit_money(request):
             post.balance = bankBal
             #print(form.balance)
             post.save()
-            return render(request, 'create_manage_acc/deposit-money.html', {'form':post})
+            form = BankAccountForm({
+            'user':request.user,
+            'deposit': request.POST.get('deposit'),
+            'balance': post.balance
+            })
+            return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
 
     form = BankAccountForm()
     return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
-
-def amor(request):
-    user = request.user
-    balance = BankAccount.objects.filter(user=request.user).latest('id').balance
-    today = datetime.datetime.now()
-    # app_date = user.loans_borrower_loans.app_date
-    # due = False
-    # if(today > app_date):
-    #     if(loan.app_date.strftime("%m %d") == today.strftime("%m %d")):
-    #         due = True
-    #         balance -= monthly_pmt
-    #         if(balance < monthly_pmt):
-    #             balance = 0
-    #         loan_amt -= monthly_pmt
-            
