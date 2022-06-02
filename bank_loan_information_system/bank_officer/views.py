@@ -27,6 +27,10 @@ def review (request):
     }
     return render(request, 'bank_officer/review.html', data)
 
+def test (request):
+   
+    return render(request, 'bank_officer/test.html')
+
 def approved (request):
     loans = Loans.objects.filter(status='Approved')
     data = {

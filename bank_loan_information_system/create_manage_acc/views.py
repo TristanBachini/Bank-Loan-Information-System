@@ -1,7 +1,7 @@
 global bankBal
 
 from django.shortcuts import render,redirect
-
+from decimal import Decimal
 from create_manage_acc.models import BankAccount
 from . import views
 from create_manage_acc.forms import AccountRegForm, BankAccountForm
@@ -9,7 +9,7 @@ from django.contrib.auth.models import Group
 from loans_borrower.models import Loans
 import datetime
 from django.db.models.functions import ExtractMonth, ExtractYear
-
+from bank_calculator.views import pmt
 
 # Create your views here.
 def account_registration(request):
@@ -19,6 +19,7 @@ def account_registration(request):
     group = Group.objects.get(name='hasbankaccount')
     
     if(request.method == 'POST'):
+        form = AccountRegForm()
         form = AccountRegForm(
             {
                 'user': request.user,
@@ -45,38 +46,71 @@ def account_registration(request):
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
 
 def deposit_money(request):
+    if not BankAccount.objects.filter(user = request.user).exists():
+        print("does not exist")
+
+        if(request.method == 'POST'):
+            if request.POST.get('balance') is None:
+                
+                form = BankAccountForm({
+                    'user':request.user,
+                    'deposit': request.POST.get('deposit'),
+                    'balance': 0
+                    })
+            if form.is_valid():
+                form.save()
+                return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+                
     bank_acc = BankAccount.objects.filter(user = request.user).latest('id')
     bankBal = bank_acc.balance
     if bankBal is None:
         bankBal = 0
-    
-    today = datetime.datetime.now()
-    print(today.strftime("%m %d"))
-    
-    
-    # loan = Loans.objects.get(user = bank_acc.user)
-    # print(loan.app_date.strftime("%m %d"))
-    # for loan in Loans.objects.filter(user = bank_acc.user):
-    #     #if loan.user = request.user then
-    #     #   if .app_date (m0nth) = date.today() then
-    #     #   latest.balance - (monthjly amortization)
-    #     print(loan)
+    form = BankAccountForm()
     if(request.method == 'POST'):
         #bankBal = request.session.get('bankBal')
-        #print(bankBal)
+        #print("asdadas")
         bankBal = float(request.POST.get('deposit')) + float(bankBal)
-        request.session['bankBal'] = bankBal
-        print(bankBal)
         form = BankAccountForm({
-                'user':request.user,
-                'deposit': request.POST.get('deposit'),
-                'balance': bankBal})
-        form.user = request.user
-        print(form.errors)
+            'user':request.user,
+            'deposit': request.POST.get('deposit'),
+            'balance': bankBal
+            })
         if form.is_valid():
-            form.save()
-            form = BankAccountForm({
-                'balance': bankBal})
-            return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+            today = datetime.datetime.now()
+            due = False
+            post  = form.save(commit = False)
+            for loan in Loans.objects.filter(user = request.user):
+                if(loan.app_date.strftime("%m %d") == today.strftime("%m %d")):
+                    due = True
+                    num_of_months = float(loan.no_of_payments)
+                    loan_amt = float(loan.loan_amt)
+                    percentage = 0.0525
+                    monthly_pmt = pmt(percentage, loan_amt, num_of_months)
+                    print("Monthly PMT")
+                    print(monthly_pmt)
+                    # print(bankBal)
+                    bankBal -= monthly_pmt
+                    loan_amt -= monthly_pmt
+                    print(bankBal)
+            post.balance = bankBal
+            #print(form.balance)
+            post.save()
+            return render(request, 'create_manage_acc/deposit-money.html', {'form':post})
+
     form = BankAccountForm()
     return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+
+def amor(request):
+    user = request.user
+    balance = BankAccount.objects.filter(user=request.user).latest('id').balance
+    today = datetime.datetime.now()
+    # app_date = user.loans_borrower_loans.app_date
+    # due = False
+    # if(today > app_date):
+    #     if(loan.app_date.strftime("%m %d") == today.strftime("%m %d")):
+    #         due = True
+    #         balance -= monthly_pmt
+    #         if(balance < monthly_pmt):
+    #             balance = 0
+    #         loan_amt -= monthly_pmt
+            

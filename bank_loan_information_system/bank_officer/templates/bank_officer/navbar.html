@@ -25,6 +25,8 @@
     <!-- Custom styles for this page -->
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
 </head>
 
 <body id="page-top">
@@ -196,6 +198,37 @@
 
     <!-- Page level custom scripts -->
     <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        /* Custom filtering function which will search data in column four between two values */
+        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+            var min = parseFloat($('#min').val(), 10);
+            var max = parseFloat($('#max').val(), 10);
+            var amount = parseFloat(data[4]) || 0; // use data for the loan amount column
+        
+            if (
+                (isNaN(min) && isNaN(max)) ||
+                (isNaN(min) && amount <= max) ||
+                (min <= amount && isNaN(max)) ||
+                (min <= amount && amount <= max)
+            ) {
+                return true;
+            }
+            return false;
+        });
+        
+        $(document).ready(function () {
+            var table = $('#example').DataTable();
+            // Event listener to the two range filtering inputs to redraw on input
+            $('#min, #max').keyup(function () {
+                table.draw();
+            });
+        });
+    </script>
 
 </body>
 

@@ -46,7 +46,7 @@ class AccountReg(models.Model):
 class BankAccount(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     deposit = models.DecimalField(decimal_places=2, max_digits=50)
-    balance = models.DecimalField(default=0, decimal_places=2, max_digits=50)
+    balance = models.DecimalField(default=0, decimal_places=2, max_digits=50, blank=True)
 
     def result(self):
         return '{}'.format(self.user)
