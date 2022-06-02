@@ -2,136 +2,159 @@
 <html lang="en">
 {% load static %} {% load humanize %}
 <head>
-  <title>Loan Application</title>
+  
+    <title>Loan Application</title>
+
+    <style>
+
+        body{
+            font-size:small ;
+        }
+
+        .table-warning{
+            border-style: solid;
+            border-color: #8b1538;
+            background-color: #8b1538;
+            color: white;
+        }
+
+        .table-light{
+            border-style: solid;
+            border-color:gray;
+            border-bottom: gray;
+            margin-left: 5px;
+        }
+
+        th {
+            height: 40px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: medium;
+        }
+
+        td {
+            height: 40px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        
+
+    </style>
+
 </head>
 
 <body>
-  <h1 class="h3 mb-2" style="color:#00573f; text-align:center">Loan Application</h1>
+    <br><br>
+  <h1 class="h3 mb-2" style="color:#00573f; text-align:center; font-size:xx-large;">UPBank Loan Application</h1>
+  <hr><br>
 
-  <div class="card shadow mb-4">
-      <div class="card-header py-2">
-          <i style="text-align: right ;"> App No: {{loan.id}} | Date of Appplication:  {{loan.app_date}}</i> 
-      </div>
-          <div class="card-body">
+  <!-- <div class="card shadow mb-4">
+      <div class="card-header py-2"> -->
+          <i style="text-align:right; font-size:large;"> App No: {{loan.id}} | Date of Appplication:  {{loan.app_date}}</i> 
+      <!-- </div> -->
+      <br> <br>
+          <!-- <div class="card-body"> -->
               <!-- Content Row -->
-              <div class="row">
+              <!-- <div class="row"> -->
                   <table class="table table-bordered">
                       <tr>
-                          <th class="table-warning" colspan="8" ><b>VEHICLE INFORMATION</b></th>
+                          <th class="table-warning" colspan="9" ><b>VEHICLE INFORMATION</b></th>
                       </tr>
                       <tr>
-                          <td class="table-light" colspan="1"><b>Manufacturer:</b></td>
-                          <td class="table-light" colspan="1">{{loan.make}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Model:</td>
-                          <td class="table-light" colspan="2">{{loan.model}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Selling Price:</td>
-                          <td class="table-light" colspan="2">PhP {{loan.sell_price}}</td>
+                          <td class="table-light" colspan="3"><b>Manufacturer:</b> {{loan.make}}</td>
+                          <td class="table-light" colspan="3"><b>Model:</b> {{loan.model}}</td>
+                          <td class="table-light" colspan="3"><b>Selling Price:</b> PhP {{loan.sell_price}}</td>
                       </tr>
                       <tr>
-                          <td class="table-light"colspan="1" style="font-weight:bold ;">Downpayment Percentage:</td>
-                          <td class="table-light" colspan="1">{{loan.dp_percent}}%</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Downpayment Amount:</td>
-                          <td class="table-light" colspan="1">PhP {{loan.dp_amt}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Amount:</td>
-                          <td class="table-light" colspan="1">PhP {{loan.loan_amt}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Number of Payments:</td>
-                          <td class="table-light" colspan="1">{{loan.no_of_payments}} Months</td>
+                        <td class="table-light"colspan="3"><b>Downpayment Percentage:</b> {{loan.dp_percent}}%</td>
+                        <td class="table-light" colspan="3"><b>Downpayment Amount: </b>PhP {{loan.dp_amt}}</td>
+                        <td class="table-light" colspan="3"><b>Loan Amount: </b>PhP {{loan.loan_amt}}</td>
+                      </tr>
+                      <tr>
+                        <td class="table-light" colspan="9"><b>Number of Payments: </b>{{loan.no_of_payments}} Months</td>
                       </tr>
                   </table>
+                  <br>
                   <table class="table table-bordered">
                       <tr>
                           <th class="table-warning" colspan="9"><b>BORROWER INFORMATION</b></th>
                       </tr>
                       <tr>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">First Name:</td>
-                          <td class="table-light" colspan="2">{{loan.first_name}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Middle Name:</td>
-                          <td class="table-light" colspan="2">{{loan.middle_name}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Last Name:</td>
-                          <td class="table-light" colspan="2">{{loan.last_name}}</td>
+                          <td class="table-light" colspan="3"><b>First Name: </b>{{loan.first_name}}</td>
+                          <td class="table-light" colspan="3"><b>Middle Name: </b>{{loan.middle_name}}</td>
+                          <td class="table-light" colspan="3"><b>Last Name: </b>{{loan.last_name}}</td>
                       </tr>
                       <tr>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Birth Date:</td>
-                          <td class="table-light" colspan="1">{{loan.birthdate}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Civil Status:</td>
-                          <td class="table-light" colspan="2">{{loan.civ_status}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Home Ownership</td>
-                          <td class="table-light" colspan="1">{{loan.home_own}}</td>
-                          <td class="table-light"colspan="1" style="font-weight:bold ;">Length of Stay:</td>
-                          <td class="table-light" colspan="1">{{loan.len_stay_num}} {{loan.len_stay}}</td>
+                          <td class="table-light" colspan="2"><b>Birth Date: </b>{{loan.birthdate}}</td>
+                          <td class="table-light" colspan="2"><b>Civil Status: </b>{{loan.civ_status}}</td>
+                          <td class="table-light" colspan="5"><b>Home Ownership: </b>{{loan.home_own}}</td>
                        </tr>             
                       <tr>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Home Address:</td>
-                          <td class="table-light" colspan="8">{{loan.unit_no}} {{loan.condo_name}}, {{loan.street}}, 
-                              {{loan.subdiv_brgy}}, {{loan.city}}, {{loan.municip_prov}}, {{loan.country}}</td>     
+                        <td class="table-light"colspan="2"><b>Length of Stay: </b>{{loan.len_stay_num}} {{loan.len_stay}}</td>
+                        <td class="table-light" colspan="7"><b>Home Address: </b>{{loan.unit_no}} {{loan.condo_name}}, {{loan.street}}, 
+                            {{loan.subdiv_brgy}}, {{loan.city}}, {{loan.municip_prov}}, {{loan.country}}</td>    
                       </tr>
                   </table>
+                  <br>
                   <table class="table table-bordered">
                       <tr>
                           <th class="table-warning" colspan="6"><b>CONTACT INFORMATION</b></th>
                       </tr>
                       <tr>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Phone Type:</td>
-                          <td class="table-light" colspan="1">{{loan.phone_type}}</td>
                           {% if loan.phone_type == "Home" %}
-                              <td class="table-light" colspan="1" style="font-weight:bold ;">Home Number: </td>
-                              <td class="table-light" colspan="1">{{loan.home_num}}</td>
+                              <td class="table-light" colspan="2"><b>Home Number: </b>{{loan.home_num}}</td>
                           {% else %}
-                              <td class="table-light" colspan="1" style="font-weight:bold ;">Mobile Number:</td>
-                              <td class="table-light" colspan="1">{{loan.phone_num}}</td>
+                              <td class="table-light" colspan="2"><b>Mobile Number: </b>{{loan.phone_num}}</td>
                           {% endif %}
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Email Address:</td>
-                          <td class="table-light" colspan="1">{{loan.email_add}}</td>
+                          <td class="table-light" colspan="4"><b>Email Address: </b>{{loan.email_add}}</td>
                       </tr>
                   </table>
+                  <br>
                   <table class="table table-bordered">
                       <tr>
                           <th class="table-warning" colspan="9"><b>EMPLOYMENT/BUSINESS INFORMATION</b></th>
                       </tr>
                       <tr>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Primary Source of Income:</td>
-                          <td class="table-light" colspan="2">{{loan.prime_income}}</td>
+                          <td class="table-light" colspan="5"><b>Primary Source of Income: </b>{{loan.prime_income}}</td>
                           {% if loan.prime_income == "Employment" %}
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Employment Type: </td>
-                          <td class="table-light" colspan="2">{{loan.emp_type}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Employment/Recruitment Agency Name:</td>
-                          <td class="table-light" colspan="2">{{loan.emp_name}}</td>
+                          <td class="table-light" colspan="4"><b>Employment Type: </b>{{loan.emp_type}}</td>
                           {% else %}
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Business Type:</td>
-                          <td class="table-light" colspan="2">{{loan.bsns_type}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Business Name:</td>
-                          <td class="table-light" colspan="2">{{loan.bsns_name}}</td>
+                          <td class="table-light" colspan="4"><b>Business Type: </b>{{loan.bsns_type}}</td>
                           {% endif %}
                       </tr>
                       <tr>
-                          {% if loan.prime_income == "Business" %}
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Job Title/Position:</td>
-                          <td class="table-light" colspan="2">{{loan.job_pos}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Employment Tenure:</td>
-                          <td class="table-light" colspan="1">{{loan.emp_tenure_num}} {{loan.emp_tenure}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Monthly Income:</td>
-                          <td class="table-light" colspan="1">PhP {{loan.emp_monthly_income}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Work Number:</td>
-                          <td class="table-light" colspan="1">{{loan.emp_work_no}}</td>
-                          {% else %}
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Business Tenure:</td>
-                          <td class="table-light" colspan="2">{{loan.bsns_tenure_num}} {{loan.bsns_tenure}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Monthly Income:</td>
-                          <td class="table-light" colspan="2">PhP {{loan.bsns_monthly_income}}</td>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Work Number:</td>
-                          <td class="table-light" colspan="2">{{loan.bsns_work_no}}</td>
+                        {% if loan.prime_income == "Employment" %}
+                        <td class="table-light" colspan="4"><b>Employment Type: </b>{{loan.emp_type}}</td>
+                        <td class="table-light" colspan="5"><b>Employment/Recruitment Agency Name: </b>{{loan.emp_name}}</td>
+                        {% else %}
+                        <td class="table-light" colspan="4"><b>Business Type: </b>{{loan.bsns_type}}</td>
+                        <td class="table-light" colspan="5"><b>Business Name: </b>{{loan.bsns_name}}</td>
+                        {% endif %}
                       </tr>
                       <tr>
-                          <td class="table-light" colspan="1" style="font-weight:bold ;">Business Address:</td>
-                          <td class="table-light" colspan="8">{{loan.bsns_unit_no}} {{loan.bsns_condo_name}}, {{loan.bsns_street}}, 
-                              {{loan.bsns_subdiv_brgy}}, {{loan.bsns_city}}, {{loan.bsns_municip_prov}}, {{loan.bsns_country}}</td>
-                          {% endif %}
-                      </tr> 
+                        {% if loan.prime_income == "Employment" %}
+                          <td class="table-light" colspan="5"><b>Job Title / Position: </b>{{loan.job_pos}}</td>
+                          <td class="table-light" colspan="4"><b>Employment Tenure: </b>{{loan.emp_tenure_num}} {{loan.emp_tenure}}</td>
+                        {% else %}
+                          <td class="table-light" colspan="3"><b>Business Tenure: </b>{{loan.bsns_tenure_num}} {{loan.bsns_tenure}}</td>
+                          <td class="table-light" colspan="4"><b>Monthly Income: </b>PhP {{loan.bsns_monthly_income}}</td>
+                          <td class="table-light" colspan="2"><b>Work Number: </b>{{loan.bsns_work_no}}</td>
+                        {% endif %}
+                        </tr>
+                      <tr>
+                        {% if loan.prime_income == "Employment" %}
+                          <td class="table-light" colspan="5"><b>Monthly Income:</b> PhP {{loan.emp_monthly_income}}</td>
+                          <td class="table-light" colspan="4"><b>Work Number:</b> {{loan.emp_work_no}}</td>
+                        {% else %}
+                            <td class="table-light" colspan="9"><b>Business Address: </b>{{loan.bsns_unit_no}} {{loan.bsns_condo_name}}, {{loan.bsns_street}}, 
+                                {{loan.bsns_subdiv_brgy}}, {{loan.bsns_city}}, {{loan.bsns_municip_prov}}, {{loan.bsns_country}}</td>
+                        {% endif %}
+                      </tr>
                   </table>
-              </div>
+              <!-- </div>
           </div>
         </div>
-      </div>
+      </div> -->
 </body>
 
 </html>
