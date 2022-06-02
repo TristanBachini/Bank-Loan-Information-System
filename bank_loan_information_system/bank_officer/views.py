@@ -1,9 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-<<<<<<< HEAD
-from django.shortcuts import render, redirect
-=======
->>>>>>> f8a1b70ae6120be136b3cf3c2476a833fb9ae360
 from loans_borrower.models import Loans
 from loans_borrower.forms import *
 # for generating pdf
