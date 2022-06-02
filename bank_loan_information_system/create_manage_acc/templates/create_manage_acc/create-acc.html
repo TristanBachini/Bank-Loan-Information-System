@@ -1,68 +1,43 @@
 {% extends 'navbar/navbar.html' %}
 {% block content %} {% load static %}
-<div class="row gx-5">
-  <div class="container-sm loan-calcu ">
-    <div class="container overflow-hidden"style="font-family:Verdana">
-        <form method="post" action="" >
-          {% csrf_token %}
+
+<h1 class="h3 mb-2" style="color:#00573f">Create Bank Account</h1>
+<div class="card shadow mb-4">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
           {{form.user}}
-          <div class="row gx-5">
-            <div class="col ">
-              <div>
-                <label for="percentage">Prefix:  </label>
-                {{form.prefix}}
-              </div>
-              <div>
-                <label for="percentage">Last Name:  </label>
-                {{form.last_name}}
-              </div>
-              <div>
-                <label for="percentage">First name:  </label>
-                {{form.first_name}}
-              </div>
-            </div>
+
+          <div class="card-body">
+            <div class="row">
+              <table class="table table-bordered">
+                      <tr>
+                        <td><label for="percentage">Last Name:  </label></td>
+                        <td>{{form.last_name}}</td>
+                        <td><label for="percentage">First name:  </label></td>
+                        <td>{{form.first_name}}</td>
+                        <td><label for="percentage">Sex:  </label></td>
+                        <td>{{ form.sex }}</td>
+                      </tr>
+                      <tr>
+                        <td><label for="percentage">Date of birth:  </label></td>
+                        <td>{{ form.birth_date }}</td>
+                        <td><label for="percentage">Marital status:  </label></td>
+                        <td>{{ form.marital_status }}</td>
+                        <td><label for="percentage">Phone number:  </label></td>
+                        <td>{{ form.phone }}</td>
+                        <td><label for="percentage">Email:  </label></td>
+                        <td>{{form.email}}</td>
+                      </tr>
+                      <tr>
+                      <td><label for="percentage">Address:  </label></td>
+                      <td>{{form.address}}</td>
+                      </tr>
+              </table>
+                      <button id="submit_button" type="submit" class="btn btn-primary login-button"style="float: left;">Create Account</button>
           </div>
-          <div class = "row gx-5">
-            <div class = "col">
-              <label for="percentage">Sex:  </label>
-              {{ form.sex }}
-            </div>
           </div>
-          <div class = "row gx-5">
-            <div class = "col">
-              <label for="percentage">Date of birth:  </label>
-              {{ form.birth_date }}
-            </div>
-          </div>
-          <div class = "row gx-5">
-            <div class = "col">
-              <label for="percentage">Marital status:  </label>
-              {{ form.marital_status }}
-            </div>
-          </div>
-          <div class = "row gx-5">
-            <div class = "col">
-              <label for="percentage">Phone number:  </label>
-              {{ form.phone }}
-            </div>
-          </div>
-          <div class = "row gx-5">
-            <div class = "col">
-              <label for="percentage">Email:  </label>
-              {{form.email}}
-            </div>
-          </div>
-          <div class = "row gx-5">
-            <div class = "col">
-              <label for="percentage">Address:  </label>
-              {{form.address}}
-            </div>
-          </div>
-          <button id="submit_button" type="submit" class="btn btn-primary login-button"style="float: left;">Create Account</button>
-        </form>
+      </form>
     </div>
-  </div>
-  
-</div>
+
 
 {% endblock %}
