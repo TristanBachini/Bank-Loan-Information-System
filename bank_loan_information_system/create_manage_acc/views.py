@@ -7,8 +7,7 @@ from . import views
 from create_manage_acc.forms import AccountRegForm, BankAccountForm
 from django.contrib.auth.models import Group
 from loans_borrower.models import Loans
-from decimal import Decimal as D
-from datetime import date
+import datetime
 from django.db.models.functions import ExtractMonth, ExtractYear
 
 
@@ -47,17 +46,24 @@ def account_registration(request):
     return render(request, 'create_manage_acc/create-acc.html', {'form':form})
 
 def deposit_money(request):
-    latest = BankAccount.objects.latest('id')
-    print(latest.user)
-    loan = Loans.objects.get(user = latest.user)
-    print(loan.app_date)
-    #for loan in Loans.object.all()
+    bank_acc = BankAccount.objects.filter(user = request.user).latest('id')
+    bankBal = bank_acc.balance
+    if bankBal is None:
+        bankBal = 0
+    
+    today = datetime.datetime.now()
+    print(today.strftime("%m %d"))
+    
+    
+    loan = Loans.objects.get(user = bank_acc.user)
+    print(loan.app_date.strftime("%m %d"))
+    for loan in Loans.objects.filter(user = bank_acc.user):
         #if loan.user = request.user then
         #   if .app_date (m0nth) = date.today() then
         #   latest.balance - (monthjly amortization)
-
+        print(loan)
     if(request.method == 'POST'):
-        bankBal = request.session.get('bankBal')
+        #bankBal = request.session.get('bankBal')
         #print(bankBal)
         bankBal = float(request.POST.get('deposit')) + float(bankBal)
         request.session['bankBal'] = bankBal
