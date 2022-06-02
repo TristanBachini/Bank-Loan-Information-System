@@ -32,7 +32,6 @@ def account_registration(request):
                 'address': request.POST.get('address'),
                 'phone': request.POST.get('phone')
             })
-        form.user = request.user
         if form.is_valid():
             bankBal = request.session.get('bankBal')
             if bankBal is None:
@@ -48,7 +47,7 @@ def account_registration(request):
 def deposit_money(request):
     if not BankAccount.objects.filter(user = request.user).exists():
         print("does not exist")
-
+        form = BankAccountForm()
         if(request.method == 'POST'):
             if request.POST.get('balance') is None:
                 
@@ -60,7 +59,8 @@ def deposit_money(request):
             if form.is_valid():
                 form.save()
                 return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
-                
+        return render(request, 'create_manage_acc/deposit-money.html', {'form':form})
+    print("daan")          
     bank_acc = BankAccount.objects.filter(user = request.user).latest('id')
     bankBal = bank_acc.balance
     if bankBal is None:
@@ -68,7 +68,7 @@ def deposit_money(request):
     form = BankAccountForm()
     if(request.method == 'POST'):
         #bankBal = request.session.get('bankBal')
-        #print("asdadas")
+        print("daan2")  
         bankBal = float(request.POST.get('deposit')) + float(bankBal)
         form = BankAccountForm({
             'user':request.user,
@@ -76,22 +76,25 @@ def deposit_money(request):
             'balance': bankBal
             })
         if form.is_valid():
+            print("daan3")  
             today = datetime.datetime.now()
             due = False
             post  = form.save(commit = False)
             for loan in Loans.objects.filter(user = request.user):
+                print(loan.app_date.strftime("%m %d"))
+                print(today.strftime("%m %d"))
                 if(loan.app_date.strftime("%m %d") == today.strftime("%m %d")):
-                    due = True
-                    num_of_months = float(loan.no_of_payments)
-                    loan_amt = float(loan.loan_amt)
-                    percentage = 0.0525
-                    monthly_pmt = pmt(percentage, loan_amt, num_of_months)
-                    print("Monthly PMT")
-                    print(monthly_pmt)
-                    # print(bankBal)
-                    bankBal -= monthly_pmt
-                    loan_amt -= monthly_pmt
-                    print(bankBal)
+                        due = True
+                        num_of_months = float(loan.no_of_payments)
+                        loan_amt = float(loan.loan_amt)
+                        percentage = 0.0525
+                        monthly_pmt = pmt(percentage, loan_amt, num_of_months)
+                        print("Monthly PMT")
+                        print(monthly_pmt)
+                        # print(bankBal)
+                        bankBal -= monthly_pmt
+                        loan_amt -= monthly_pmt
+                        print(bankBal)
             post.balance = bankBal
             #print(form.balance)
             post.save()
