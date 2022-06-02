@@ -45,25 +45,32 @@ class Loans(models.Model):
         ('OFW Non-Immigrant(Government)', 'OFW Non-Immigrant(Government)'),
         ('OFW Non-Immigrant(Private)', 'OFW Non-Immigrant(Private)'),
     )
+
+    LOAN_TAG = (
+        ('For Review', 'For Review'),
+        ('Delinquent', 'Delinquent'),
+        ('In-Loan Default', 'In-Loan Default'),
+        ('Completed', 'Completed'),
+    )
     
     app_date = models.DateTimeField(null=True, blank=True)
 
     status = models.CharField(default='For Review',max_length=100, choices=STATUS, null=True)
 
-    make = models.CharField(max_length=100, null=True, blank=True)
-    model = models.CharField(max_length=100, null=True, blank=True)
-    sell_price = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=True)
-    dp_percent = models.PositiveIntegerField(null=True, blank=True)
-    dp_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=True)
-    loan_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=True)
-    no_of_payments = models.IntegerField(null=True, blank=True)
+    make = models.CharField(max_length=100, null=True, blank=False)
+    model = models.CharField(max_length=100, null=True, blank=False)
+    sell_price = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=False)
+    dp_percent = models.PositiveIntegerField(null=True, blank=False)
+    dp_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=False)
+    loan_amt = models.DecimalField(max_digits=50, decimal_places=2, null=True, blank=False)
+    no_of_payments = models.IntegerField(null=True, blank=False)
     
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    first_name = models.CharField(max_length=100, null=True, blank=True)
+    first_name = models.CharField(max_length=100, null=True, blank=False)
     middle_name = models.CharField(max_length=100, null=True, blank=True)
-    last_name = models.CharField(max_length=100, null=True, blank=True)
-    birthdate = models.DateField(null=True, blank=True)
-    civ_status = models.CharField(max_length=100, choices=CIV_STATUS, null=True, blank=True)
+    last_name = models.CharField(max_length=100, null=True, blank=False)
+    birthdate = models.DateField(null=True, blank=False)
+    civ_status = models.CharField(max_length=100, choices=CIV_STATUS, null=True, blank=False)
 
     unit_no = models.CharField(max_length=100, null=True, blank=True)
     condo_name = models.CharField(max_length=100, null=True, blank=True)
@@ -76,12 +83,12 @@ class Loans(models.Model):
     len_stay_num = models.IntegerField(null=True, blank=True)
     home_own = models.CharField(max_length=100, choices=HOME_OWN, null=True, blank=True)
 
-    phone_type = models.CharField(max_length=100, choices=PHONE_TYPE, null=True, blank=True)
-    home_num = models.CharField(max_length=100, null=True, blank=True)
-    mobile_num = PhoneNumberField(max_length=100, null=True, blank=True)
-    email_add = models.CharField(max_length=100, null=True, blank=True)
+    phone_type = models.CharField(max_length=100, choices=PHONE_TYPE, null=True, blank=False)
+    home_num = models.CharField(max_length=100, null=True, blank=False)
+    mobile_num = PhoneNumberField(max_length=100, null=True, blank=False)
+    email_add = models.CharField(max_length=100, null=True, blank=False)
 
-    prime_income = models.CharField(max_length=100, choices=PRIME_INCOME, null=True, blank=True)
+    prime_income = models.CharField(max_length=100, choices=PRIME_INCOME, null=True, blank=False)
 
     emp_type = models.CharField(max_length=100, choices=EMP_TYPE, null=True, blank=True)
     emp_name = models.CharField(max_length=100, null=True, blank=True)
@@ -108,10 +115,7 @@ class Loans(models.Model):
 
     loan_docs = models.FileField(upload_to='loan_docs/', null=True, blank=True)
     
-    # int_rate = models.CharField(max_length=50, null=True)
-    # principal = models.IntegerField(null=True, blank=True)
-    # rem_bal = models.IntegerField(null=True, blank=True)
-    # next_due = models.DateField(null=True)
+    loan_tag = models.CharField(max_length=100, choices=LOAN_TAG, null=True, blank=True)
 
     def __str__(self):
         return "{}, {} - {}".format(self.last_name, self.first_name, self.id)
