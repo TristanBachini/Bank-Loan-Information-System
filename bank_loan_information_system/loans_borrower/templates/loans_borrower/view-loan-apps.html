@@ -12,20 +12,20 @@
                                     <thead>
                                         <tr>
                                             <th>Application No.</th>
-                                            <th>Last Name</th>
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Date of Application</th>
+                                            <th>Status</th>
+                                            <th>Manufacturer</th>
+                                            <th>Model</th>
+                                            <th>Selling Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>                              
                                         {% for loan in loans %}
                                                 <tr onclick="window.location='{% url 'view-loan-apps-info' loan.id %}'">
                                                     <td>{{loan.id}}</a></td>
-                                                    <td>{{loan.last_name}}</td>
-                                                    <td>{{loan.first_name}}</td>
-                                                    <td>{{loan.middle_name}}</td>
-                                                    <td>{{loan.app_date}}</td>
+                                                    <td>{{loan.status}}</td>
+                                                    <td>{{loan.make}}</td>
+                                                    <td>{{loan.model}}</td>
+                                                    <td>{{loan.sell_price}}</td>
                                                 </tr>
                                         {% endfor %}
                                     </tbody>

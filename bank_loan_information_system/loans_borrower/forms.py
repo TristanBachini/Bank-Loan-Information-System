@@ -7,7 +7,7 @@ class LoanApplyForm(forms.ModelForm):
     mobile_num = PhoneNumberField(
         widget=PhoneNumberInternationalFallbackWidget, required=False,
     )
-    mobile_num.widget.attrs = {'class': 'form-control', 'placeholder': '+63'}
+    mobile_num.widget.attrs = {'class': 'form-control', 'id': 'mobile_num', 'placeholder': '+63'}
     class Meta:
         model = Loans
         fields = '__all__'
@@ -46,11 +46,11 @@ class LoanApplyForm(forms.ModelForm):
             'home_own': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Ownership'}),
 
             # User contact
-            'phone_type': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Type of Phone'}),
-            'home_num': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Home no.'}),
+            'phone_type': forms.Select(attrs={'class': 'form-control', 'id': 'phone_type', 'placeholder': 'Type of Phone'}),
+            'home_num': forms.TextInput(attrs={'class': 'form-control', 'id': 'home_num', 'placeholder': 'Home no.'}),
             'email_add': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email address'}),
 
-            'prime_income': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Primary Income'}),
+            'prime_income': forms.Select(attrs={'class': 'form-control', 'id': 'prime_income', 'placeholder': 'Primary Income'}),
 
             # If employment
             'emp_type': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Employment Type'}),

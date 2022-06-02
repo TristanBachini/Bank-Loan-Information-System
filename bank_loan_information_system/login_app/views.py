@@ -19,9 +19,9 @@ def login_page(request):
         if user is not None:
             login(request, user)
             if user.groups.filter(name="banker"):
-                return render(request, "bank_officer/dashboard.html")
+                return redirect("/bank-officer/dashboard")
             else:
-                return render(request, "main/home.html")
+                return redirect('/borrower/view-loan-apps')
         else:
             messages.info(request, "Username or Password is incorrect.")
             return render(request, "login_app/login.html")
