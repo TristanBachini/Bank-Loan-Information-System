@@ -113,7 +113,7 @@ def deposit_money(request):
                             # user = request.user
                             # group = Group.objects.get(name='hasbankaccount') 
                             # user.groups.remove(group)
-                            # return render(request, 'bank_calculator/loancalculator.html')
+                            return render(request, 'create_manage_acc/over-the-counter.html')
                         if(float(loan.loan_bal) <= 0):
                             loan.loan_tag = "Completed"
                         loan.save()
