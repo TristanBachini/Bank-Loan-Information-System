@@ -92,7 +92,13 @@ def deposit_money(request):
                         print(monthly_pmt)
                         print("loan balance: ")
                         print(loan_bal)
+                        monthly_pmt = float(monthly_pmt)
+                        if loan.loan_bal is None:
+                            loan_bal = 0
+                        else:
+                            loan_bal = float(loan.loan_bal)
                         # print(bankBal)
+                        float(bankBal)
                         bankBal -= monthly_pmt
                         loan_bal -= monthly_pmt
                         loan.loan_bal = "{:.2f}".format(loan_bal)
@@ -107,10 +113,11 @@ def deposit_money(request):
                         if(float(loan.loan_bal) <= 0):
                             loan.loan_tag = "Completed"
                         loan.save()
+                        bankBal = "{:.2f}".format(bankBal)
                         print("new loan bal:")
                         print(loan.loan_bal)
+                        print("bank balance:")
                         print(bankBal)
-                        bankBal = "{:.2f}".format(bankBal)
             post.balance = bankBal
             #print(form.balance)
             post.save()
