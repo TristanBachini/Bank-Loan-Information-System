@@ -106,6 +106,8 @@ def deposit_money(request):
                         bankBal -= monthly_pmt
                         loan_bal -= monthly_pmt
                         loan.loan_bal = "{:.2f}".format(loan_bal)
+                        print("bank balance:")
+                        print(bankBal)
                         if bankBal < monthly_pmt:
                             loan.loan_tag = "Delinquent"
                             # BankAccount.objects.filter(user=request.user).delete()
