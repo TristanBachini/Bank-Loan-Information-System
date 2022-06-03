@@ -1,6 +1,7 @@
 {% extends 'navbar/navbar.html' %}
 {% load static %}
 {% block content %}
+{% load humanize %}
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2" style="color:#00573f">Loan Calculator</h1>
@@ -93,7 +94,7 @@
                                                           Selling Price
                                                         </div>
                                                         <div class="col" style="text-align:left">
-                                                          PhP {{price}}
+                                                          ₱ {{price|intcomma}}
                                                         </div>
                                                     </div><br>
                                                     <div class="row gx-5">
@@ -101,7 +102,7 @@
                                                           Down Payment
                                                         </div>
                                                         <div class="col" style="text-align:left">
-                                                          PhP {{amount}}({{percentage}}%)
+                                                          ₱ {{amount|intcomma}}({{percentage}}%)
                                                         </div>
                                                     </div><br>
                                                     <div class="row gx-5">
@@ -109,7 +110,7 @@
                                                           Amount Financed
                                                         </div>
                                                         <div class="col" style="text-align:left">
-                                                          PhP {{loan}}
+                                                          ₱ {{loan}}
                                                         </div>
                                                     </div><br>
                                                     <div class="row gx-5">
@@ -117,7 +118,7 @@
                                                           Monthly Amortization
                                                         </div>
                                                         <div class="col" style="text-align:left">
-                                                          PhP {{payment}}
+                                                          ₱ {{payment|intcomma}}
                                                         </div>
                                                     </div><br>
                                                     <div class="row gx-5">

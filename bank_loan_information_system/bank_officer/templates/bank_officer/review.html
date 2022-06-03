@@ -1,6 +1,7 @@
 {% extends 'bank_officer/navbar.html' %}
 {% load static %}
 {% block content %}
+{% load humanize %}
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h3 class="m-0 font-weight-bold" style="color:#00573f">Loan Applications for Review</h3>
@@ -35,7 +36,7 @@
                                                 <td>{{loan.last_name}}</td>
                                                 <td>{{loan.first_name}}</td>
                                                 <td>{{loan.middle_name}}</td>
-                                                <td>{{loan.loan_amt}}</td>
+                                                <td>{{loan.loan_amt|intcomma}}</td>
                                                 <td>{{loan.app_date}}</td>
                                                 <td>
                                                     <button id="submit_button" type="submit" class="btn btn-primary login-button">

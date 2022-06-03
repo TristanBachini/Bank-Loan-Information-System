@@ -39,9 +39,9 @@
                         <td class="table-light"colspan="1" style="font-weight:bold ;">Downpayment Percentage:</td>
                         <td class="table-light" colspan="1">{{loan.dp_percent}}%</td>
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Downpayment Amount:</td>
-                        <td class="table-light" colspan="1">₱{{loan.dp_amt|intcomma}}</td>
+                        <td class="table-light" colspan="1">₱ {{loan.dp_amt|intcomma}}</td>
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Loan Amount:</td>
-                        <td class="table-light" colspan="1">₱{{loan.loan_amt|intcomma}}</td>
+                        <td class="table-light" colspan="1">₱ {{loan.loan_amt|intcomma}}</td>
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Number of Payments:</td>
                         <td class="table-light" colspan="1">{{loan.no_of_payments}} Months</td>
                     </tr>
@@ -118,14 +118,14 @@
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Employment Tenure:</td>
                         <td class="table-light" colspan="1">{{loan.emp_tenure_num}} {{loan.emp_tenure}}</td>
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Monthly Income:</td>
-                        <td class="table-light" colspan="1">₱{{loan.emp_monthly_income|intcomma}}</td>
+                        <td class="table-light" colspan="1">₱ {{loan.emp_monthly_income|intcomma}}</td>
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Work Number:</td>
                         <td class="table-light" colspan="1">{{loan.emp_work_no}}</td>
                         {% else %}
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Business Tenure:</td>
                         <td class="table-light" colspan="2">{{loan.bsns_tenure_num}} {{loan.bsns_tenure}}</td>
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Monthly Income:</td>
-                        <td class="table-light" colspan="2">₱{{loan.bsns_monthly_income|intcomma}}</td>
+                        <td class="table-light" colspan="2">₱ {{loan.bsns_monthly_income|intcomma}}</td>
                         <td class="table-light" colspan="1" style="font-weight:bold ;">Work Number:</td>
                         <td class="table-light" colspan="2">{{loan.bsns_work_no}}</td>
                     </tr>

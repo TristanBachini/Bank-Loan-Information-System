@@ -1,6 +1,7 @@
 {% extends 'navbar/navbar.html' %}
 {% load humanize %}
 {% block content %} {% load static %}
+{% load humanize %}
 <div class="row gx-5">
     <div class="container-sm ">
       <h1 class="h3 mb-2" style="color:#00573f">Deposit Money</h1>
@@ -14,7 +15,7 @@
               </div>
               <br>
               <div class = col>
-              <label for="percentage">Balance: PHP</label>
+              <label for="percentage">Balance: ₱</label>
               {% if bank_bal %}
                 {{bank_bal|floatformat:2|intcomma}}
               {% else %}
