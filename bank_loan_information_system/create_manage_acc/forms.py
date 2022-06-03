@@ -65,5 +65,6 @@ class BankAccountForm(ModelForm):
         fields = '__all__'
         widgets = {
             'user':  HiddenInput(attrs={'type': 'hidden'}),
-            'balance' : forms.NumberInput(attrs={'required': False, 'disabled': True})
+            'balance' : forms.NumberInput(attrs={'required': False, 'disabled': True}),
+            'deposit': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
         }
